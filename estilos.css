@@ -1,0 +1,31 @@
+body{
+    font-family: Arial;
+}
+
+td{
+    border: 1px solid;
+    width: 25%;
+}
+
+td.text{
+    padding-left: 5vw;
+}
+
+img{
+    width: 100%;
+}
+
+.char_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.char{
+    width: 45%;
+}
+
+.text1{
+    width: 45%;
+    padding-left: 5vw;
+}
