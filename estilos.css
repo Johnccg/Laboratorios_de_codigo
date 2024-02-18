@@ -52,3 +52,16 @@ p.char{
     width: 65%;
     text-align: justify;
 }
+
+button{
+    size: 10em;
+}
+
+table{
+    border: solid black 1px;
+    border-collapse: collapse;
+}
+
+td{
+    border: solid black 1px;
+}
