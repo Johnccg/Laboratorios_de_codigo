@@ -142,18 +142,28 @@
 
             <div id="lab3">
                 <h2>Laboratorio 3: CSS</h2>
+                <h4>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? </h4>
+                <p>
+                    !important casi no debería usarse porque como tiene preferecnia sobre <strong> CUALQUIER</strong> selector es fácil sobreescribir reglas que no querías y que necesites utilizar muchos !important y que tu CSS quede hecho un desastre,
+                    esto no significa que no se pueda usar nunca hay casos específicos donde puede ser útil si se usa concuidado, por ejemplo si tienes un elemento de una clase dentro de un div con una ID lo puedes usar para forzar a que use el formato de la clase.
+                </p>
+                
+                <h4>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</h4>
+                <p>
+                    Las imágenes pueden ser muy pesadas, así que usar una para el fondo puede realentizar la página, además dependiendo de la imágen puede no adaptarse bien a cambios en el tamaño de la pantalla y no vesre bien en dispositivos móviles,
+                    además si la imágen es de un color similar al texto o si tiene musho ruido puede hacer difícil leer texto que pueda tener encima.
+                </p>
 
+                <h4>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?</h4>
                 <p>
-                    Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? 
+                    Considero que las mejores unidades son % y px, px te permite ser preciso respecto al tamaño, por lo que para elementos que raramente cambian de tamaño según la pantalla como bordes en elementos es útil,
+                    en cambio % permite que los elementos se adapten al tamaño del contenedor, esto permite que si se cambia el tamaño de la pantalla los emementos pueden ajustar su tamaño para permanecer a la misma proporción
+                    y mantener el diseño de la página.
                 </p>
+                
+                <h4>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</h4>
                 <p>
-                    Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?
-                </p>
-                <p>
-                    Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?
-                </p>
-                <p>
-                    ¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?
+                    Porque mientras hacemos el css le damos un cierto formato con espacios en blanco como nuevas líneas y tabuladores, estos espacios hacen que el navegador tenga que descargar y procesar menos infroamción, agilizando el rendimiento de la página.
                 </p>
             </div>
 
