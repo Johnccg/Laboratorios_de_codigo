@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Preguntas</title>
-        <link rel="stylesheet" href="estilos.css">
+        <link rel="stylesheet" href="./css/estilos.css">
     </head>
 
     <body style="font-family: Arial;">
@@ -13,6 +13,7 @@
                 <li> <a href="#lab1">Lab1</a> 
                 <li> <a href="#lab3">Lab3</a> 
                 <li> <a href="#lab4">Lab4</a> 
+                <li> <a href="#lab5">Lab4</a> 
                 <li> <a href="#referencias">Referencias</a> 
             </ul>
             <h1>Preguntas</h1>
@@ -171,19 +172,51 @@
                 <h2>Laboratorio 4: Fundamentos de JavaScript</h2>
 
                 <h4>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h4>
-                <p></p>
+                <p>
+                    Ambos se relacionan en el sentido de que ambos son lenguajes orientados a objetos, pero en el resto se diferencían mucho. Java es un programa que debe compilarse, mientras que JavaScript solo es interpretado,
+                    las variables de Java solo pueden almacenar un solo tipo de datos, mientras que en JavaScript este no es el caso y la misma variable puede tener varios tipos de dato, Java se ejecuta en su propia máquina virtual y JavaScript se ejecuta en navegadores
+                </p>
 
                 <h4>¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)</h4>
-                <p></p>
+                <p>
+                    <ul>
+                        <li>getDate() Regresa el número del día de la fecha indicada de actuerdo al tiempo actual
+                        <li>getDay() Regresa el día de la semana de la fecha indicada, el resultado es un número del 1-7 representando uno de los días de la semana
+                        <li>getTimezoneOffset()Toma una fecha, la evalúa en UTC y regresa la diferencia entre la fecha indicada y el horario actual
+                        <li>now() Regresa los milisegundos que han pasado desde el 1° de enero de 1970
+                        <li>parse() Toma un string con una fecha y regresa el número de milisagundos al igual que now()
+                    </ul>
+                </p>
 
                 <h4>¿Qué métodos tienen los arreglos? (Menciona al menos 5*)</h4>
-                <p></p>
+                <p>
+                    <ul>
+                        <li>push() Añade el elemento indicado al final del arreglo
+                        <li>pop() Elimina el último elemento del arreglo y lo regresa
+                        <li>slice() Regresa una copia del intervalo indicado del arreglo, esto no modifica el arreglo
+                        <li>fill() Cambia los valores de un arreglo por el valor indicado a partir del índice indicado
+                        <li>filter() Crea un nuevo arreglo con los valores que cumplan la condición
+                    </ul>
+                </p>
 
                 <h4>¿Cómo se declara una variable con alcance local dentro de una función?</h4>
-                <p></p>
+                <p>
+                    Par declarar una variable se puede utilizar tanto var como let, para declarar una variable local se debe usar let.
+                </p>
 
                 <h4>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h4>
-                <p></p>
+                <p>
+                    Que una variable que solo debería existir dentro de la ejecución de una variable va a existir en todo el programa, esto puede causar problemas con redefinir la misma variable y ocupa más espacio ya que las variables nunca desaparecen.
+                </p>
+            </div>
+
+            <div id="lab5">
+                <h2>Lab 5: Frameworks de estilo</h2>
+
+                <h4>Describe Material design</h4>
+                <p>
+                    Es un sistema de lienamientos, componentes y herramientas desarrollado pod Google para ayudar con el desarrollo para Android, iOS, Flutter y la web
+                </p>
             </div>
 
             <div id="referencias">
@@ -200,6 +233,12 @@
                     <li>Mozilla. (s.f.). <em>Estilizando tablas</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables.</a>
                     <li>Mozilla. (s.f.). <em>Controles de formulario originales</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls">https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls.</a>
                     <li>KeepCoding. (2023). <em>¿Qué es el ciclo de vida del desarrollo del sistema?</em> Recuperado de: <a href="https://keepcoding.io/blog/ciclo-de-vida-del-desarrollo-del-sistema/">https://keepcoding.io/blog/ciclo-de-vida-del-desarrollo-del-sistema/.</a>
+                    <li>w3schools. (s.f.). <em>CSS The !important Rule</em> Recuperado de: <a href="https://www.w3schools.com/css/css_important.asp">https://www.w3schools.com/css/css_important.asp.</a>
+                    <li>Mozilla. (s.f.). <em>Valores y unidades CSS</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Values_and_units">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Values_and_units.</a>
+                    <li>Material Design. (s.f.). <em>Inroduction</em> Recuperado de: <a href="https://m2.material.io/design/introduction">https://m2.material.io/design/introduction.</a>
+                    <li>Universidad Europea. (2022). <em>Diferencias entre Java y JavaScript</em> Recuperado de: <a href="https://universidadeuropea.com/blog/diferencias-entre-java-y-javascript/">https://universidadeuropea.com/blog/diferencias-entre-java-y-javascript./</a>
+                    <li>Mozilla. (s.f.). <em>Date</em> Recuperado de: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date.</a>
+                    <li>Mozilla. (s.f.). <em>Array</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array">https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array.</a>
                 </ol>
             </div>
         </main>

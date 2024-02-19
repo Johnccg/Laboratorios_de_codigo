@@ -142,7 +142,7 @@ function contador(arreglo){
     let positivo = 0
     let negativo = 0
     let cero = 0
-    let text = "<h3>Prueba de función Contador</h3><p>Recibió: ["
+    let text = "<h4>Prueba de función Contador</h4><p>Recibió: ["
 
     for (let i in arreglo){
         text += arreglo[i]
@@ -171,7 +171,7 @@ function contador(arreglo){
 }
 
 function promedio(matriz){
-    let text = "<h3>Prueba de función Promedio</h3><p>Recibió:</p><table>"
+    let text = "<h4>Prueba de función Promedio</h4><p>Recibió:</p><table>"
     let prom =[]
     let suma = 0
 
@@ -202,7 +202,7 @@ function promedio(matriz){
 }
 
 function inverso(num){
-    let text = "<h3>Prueba de función Inverso</h3><p>Recibió: " + num + "<br>Regresó: "
+    let text = "<h4>Prueba de función Inverso</h4><p>Recibió: " + num + "<br>Regresó: "
     let num_str = num.toString()
     let num_secc
     const pila = []
@@ -246,5 +246,5 @@ function inverso(num){
 }
 
 function problema(){
-
+    
 }

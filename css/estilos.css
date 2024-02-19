@@ -53,6 +53,7 @@ img:hover{
 p.char{
     width: 65%;
     text-align: justify;
+    text-justify: inter-word;
 }
 
 button{
