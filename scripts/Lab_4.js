@@ -133,7 +133,7 @@ function suma_aleatoria(){
         text += "La respuesta es incorrecta"
     }
 
-    text += "<br>Te tomó " + end - start + " milisegundos responder la pregunta</p>"
+    text += "<br>Te tomó " + (end - start) + " milisegundos responder la pregunta</p>"
 
     document.getElementById("Placeholder").innerHTML = text;
 }
