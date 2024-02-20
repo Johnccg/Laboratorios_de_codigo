@@ -70,3 +70,44 @@ table{
 td{
     border: solid black 1px;
 }
+
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.col1{
+    width: 40%; 
+    text-align: right; 
+    padding-right: 1em;
+}
+
+.col2{
+    width: 30%; 
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.col3{
+    padding-left: 1em;
+    width: 30%;
+}
+
+.callout{
+    position: relative;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    border: 1px solid rgba(10, 10, 10, 0.25);
+    border-radius: 0;
+    background-color: #d7ecfa;
+    color: #0a0a0a;
+}
+
+#fortaleza{
+    /* visibility: hidden; */
+}
+
+#similitud{
+    visibility: hidden;
+    color: red;
+}

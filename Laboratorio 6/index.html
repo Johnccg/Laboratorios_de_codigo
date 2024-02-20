@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Validador de contraseñas</title>
+        <link rel="stylesheet" href="../css/estilos.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <header>
+            <p id = "intro">Juan Carlos calderón García | A01625694 | a01625696@tec.mx</p>
+            <a href="../Index.html">Regresar</a>
+        </header>
+        <div class="callout">
+            <h1>Valida tu contraseña</h1>
+
+            <p>
+                Tu contraseña debe tener el menos:
+                <ul>
+                    <li>10 carascteres</li>
+                    <li>Letras en mayúscula y minuscula</li>
+                    <li>Números</li>
+                    <li>caracteres especiales ($, @, %, &, etc.)</li>
+                </ul>
+            </p>
+
+            <div class="container">
+                <div class="col1">
+                    Ingresa tu contraseña<br>
+                    Vuelve a ingresar tu contraseña
+                </div>
+                <div class="col2">
+                    <form>
+                        <input id="pswrd" type="password">
+                        <input id="pswrd_confirm" type="password">
+                        <span id="similitud">                            
+                            <br>La contraseña no concuerda
+                        </span><br>
+                        <button type="button" id="submit">Confirmar</button>
+                    </form>
+                    
+                </div>
+                <div class="col3">
+                    <span id="fortaleza">asda</span>
+                </div>
+            </div>
+        </div>
+        <script src="../scripts/Lab_6.js"></script>
+    </body>
+</html>
