@@ -24,16 +24,8 @@ router.use((request, response, next) => {
 });
 
 router.use("/crear",(request, response, next) => {
-    //Página de crear
+    response.render("crear")
 })
-
-router.use((request, response, next) => {
-    response.status(404)
-    let html = html_header
-    html += `<h2>Lista de armas</h2>`
-    html += html_footer
-    response.send(html); //Manda la respuesta
-});
 
 router.post("/crear",(request,response,next)=>{
     console.log(request.body)
@@ -44,6 +36,7 @@ router.get("/",(request, response, next) => {
     html += `<h2>Página principal</h2>`
     html += html_footer
     response.send(html); //Manda la respuesta
+    response.render("clases",{tropas: tropas}) //Envía variable a la página tropas
 })
 
 module.exports = router
