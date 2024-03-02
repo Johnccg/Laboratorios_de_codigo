@@ -36,7 +36,7 @@ router.get("/",(request, response, next) => {
     html += `<h2>Página principal</h2>`
     html += html_footer
     response.send(html); //Manda la respuesta
-    response.render("clases",{tropas: tropas}) //Envía variable a la página tropas
+    //response.render("clases",{tropas: tropas}) //Envía variable a la página tropas
 })
 
 module.exports = router

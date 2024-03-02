@@ -11,20 +11,29 @@ const html_header = `<!DOCTYPE html>
         <title>Laboratorios</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/css/foundation.min.css" crossorigin="anonymous">
     </head>
-    <body class="grid-container">
+    <body>
             <header>
+                <div class="top-bar">
+                    <div class="top-bar-left">
+                        <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text">Site Title</li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/preguntas">Preguntas</a></li>
+                        <li><a href="/validar">Validador de contraseñas</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <p id = "intro">Juan Carlos calderón García | A01625694 | a01625696@tec.mx</p>
-                <strong><a href="./Lab.html">Preguntas</a></strong> <strong><a href="./Laboratorio 6/index.html">Validador de contraseñas</a></strong>
             </header>
+            <main class="grid-container">
 `
 
-const html_footer = `<footer>
+const html_footer = `
+        </main>
+        <footer>
             <br><br>
             <p>Editado en: <a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
         </footer>
-
-        <script src="./scripts/POE.js"></script>
-        <script src="./scripts/Lab_4.js"></script>
     </body>
 </html>
 `
@@ -42,18 +51,15 @@ console.log("Con las galletas [1,1] y los niños [1,2,3] se alimentan " + asigna
 console.log("Con las galletas [1,3,4,4,5] y los niños [1,2,3,7,4] se alimentan " + asignar_galletas([1,2,3],[1,1]) + " niños")
 
 const servidor = http.createServer((request,response) => {
-    console.log(request.url)
-    response.setHeader("Content-Type","text/html")
-    
-    response.write(html_header)
-    response.write(`
-                <p id = "intro">Juan Carlos calderón García | A01625694 | a01625696@tec.mx</p>
-                <strong><a href="./Lab.html">Preguntas</a></strong> <strong><a href="./Laboratorio 6/index.html">Validador de contraseñas</a></strong>
+    if (request.url == "/"){
+        response.setHeader("Content-Type","text/html")
+        response.write(html_header)
+        response.write(`
                 <h1>Mis personajes favoritos</h1>
                 <p>Esta es una lista de mis personajes favoritos, a continuación voy a explicar por qué  son de mis personajes favoritos.</p>
                 
         
-            <main>
+            
                 <h2>Kirby</h2>  
                 <div class = "grid-x grid-padding-x">
                     <div class = "medium-8 large-4 cell">
@@ -130,11 +136,409 @@ const servidor = http.createServer((request,response) => {
                 <div id = "funciones">
                     <h1>Pruebas de las funciones:</h1>
                 </div>
-            </main>
     `)
-    response.write(html_footer)
+        response.write(html_footer)
+        response.end()
+        
+    }else if(request.url == "/preguntas"){
+            response.setHeader("Content-Type","text/html")
+            response.write(html_header)
+            response.write(`<section>
+            <ul>
+                <li> <a href="#lab1">Lab1</a> 
+                <li> <a href="#lab3">Lab3</a> 
+                <li> <a href="#lab4">Lab4</a> 
+                <li> <a href="#lab5">Lab5</a> 
+                <li> <a href="#lab6">Lab6</a> 
+                <li> <a href="#referencias">Referencias</a> 
+            </ul>
+            <h1>Preguntas</h1>
+        </section>
 
-    response.end()
+        <section>
+            <div id="lab1">
+                <h2>Laboratorio 1: Introducción a las aplicaciones web, HTML5 y ciclo de vida de los sistemas de información</h2>
+
+                <h4>¿Cuál es la diferencia entre Internet y la World Wide Web?</h4>
+                <p>
+                    El internet es la red de dispositivos físicos como computadoras, routers y servidores, en cambio la World Wide Web es todo el contenido al que se puede acceder con dichos dispositivos.
+                </p>
+                
+                <h4>¿Cuáles son las partes de un URL?</h4>
+                <p>
+                    Una URL se divide en 4 partes ek esquema, el host, la dirección y la búsqueda
+                    <ol>
+                        <li>El esquema es el protocolo que se va a usar para acceder al recurso en el Internet y puede ser HTTP o HTTPS.
+                        <li>El host es quén tiene el recurso al que se está accediendo, también se le llama el dominio.
+                        <li>La dirección identifica el elemento específico al que se quiere acceder.
+                        <li>La búsqueda manda información al recurso que se está accediendo.
+                    </ol>
+                </p>
+                
+                <h4>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h4>
+                <p>
+                    <ul>
+                        <li>GET: Se utiliza para obtener información de un servidor utilizando una URI.
+                        <li>HEAD: Al igual que Get se utiliza para obtener información, pero en este caso solo regresa la linea de estatus y el header
+                        <li>POST: Manda información al servidor.
+                        <li>PUT: Reemplaza todas las representaciones del recurso elegido con el contenido subido.
+                        <li>PATCH: Aplica modificaciones parciales a un recurso.
+                        <li>DELETE: Elimina todas las representaciones del recurso correspondiente a una URI.
+                    </ul>
+                </p>
+                
+                <h4>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</h4>
+                <p>
+                    Se debería utilizar POST ya que se tiene que enviar la información del fromulario al servidor de forma cifrada.
+                </p>
+                
+                <h4>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</h4>
+                <p>
+                    Se utiliza GET para obtener el recurso ligado a la URL.
+                </p>
+                
+                <h4>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</h4>
+                <p>
+                    Mo ocurrió ningún error el código 200 significa que la solicitud fué exitosa.
+                </p>
+                
+                <h4>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?</h4>
+                <p>
+                    No, ya que los errores 4xx son errores del lado del cliente
+                </p>
+                
+                <h4>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?</h4>
+                <p>
+                    Si, ya que los errores 5xx son errores del lado del servidor, en este caso es porque hubo un caso que el desarrollador no consideró y llevó a que no hubiera forma de completar la operación.
+                </p>
+                
+                <h4>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</h4>
+                <p>
+                    Significa que el atributo no se debería utilizar ya que se introdujo un elemento más novedoso que cumple la misma fucnión y es mejor o más claro. Por ejemplo varios atributos de estilo como background, bgcolor, align, color y border fueron depreciados en favor del uso de CSS para el estilo de la página.
+                </p>
+                
+                <h4>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h4>
+                <p>
+                    HTML5 hizo cambios que hacer más fácil leer el código de una página al crear etiquetas que son más semánticas, además de incluir el uso de CSS y JavaScript.
+                </p>
+                
+                <h4>¿Qué componentes de estructura y estilo tiene una tabla?</h4>
+                <p>
+                    &lttable&gt es la tag para iniciar una tabla dentro de esta &ltthead&gt, &lttbody&gt y &lttfoot&gt son etiquetas semánticas que ayudan a dividir las partes de la tabla y para crear la tabla en sí se usa: &ltcaption&gt pata añadir un título o descripción &lttr&gt para las líneas, &ltth&gt para las celdas de encabezado y &lttd&gt  para una celda normal.
+                    <br>Para el estilo puedes modificar los siguientes elementos:
+                    <ul>
+                        <li>El espaciado de las celdas con width y si se necesita untamaño para cada columna en lugar de usar una id o clase para cada columa se puede usar thead th:nth-child(x) para seleccionar la columna que se quiera
+                        <li>El texto de la tabla con elementos como font-family text-align y letter-spacing.
+                        <li>El borde de la tabla con los varios atributos que empiezan con border.
+                        <li>La ubicación del caption.
+                        <li>El fondo de cada celda y la tabla en sí.
+                    </ul>
+                </p>
+
+                <h4>¿Cuáles son los principales controles de una forma HTML5?</h4>
+                <p>
+                    <ul>
+                        <li>Campos de texto de una línea &ltinput tpype = "text"&gt
+                        <li>Campos de contraseña &ltinput tpype = "password"&gt, igual que un campo de texto, pero oculta lo que se está escribiendo
+                        <li>Contenido oculto &ltinput tpype = "hidden"&gt, no aparece en el form, sino que se usa para mandar información al servidor junto con el resto de los datos
+                        <li>Casillas de verificación &ltinput tpype = "checkbox"&gt, permite seleccionar varias opciones y cada input es una opción
+                        <li>Botón de opción &ltinput tpype = "radio"&gt, solo permite seleccionar una opción y cada input es una opción
+                        <li>Botón de envío &ltinput tpype = "submit"&gt, Envía los datos ingresados al servidor
+                        <li>Botón de reinicio &ltinput tpype = "reset"&gt, restablece todos los controles a su valor por defecto
+                        <li>Botón &ltinput tpype = "butto"&gt, botón cuya función se puede definir con JavaScript
+                        <li>Botón imagen &ltinput tpype = "image"&gt, se comporta igual que un botón de envío, pero aparece como una imágen
+                        <li>Selector de archivos &ltinput tpype = "file"&gt, Permite subir archivos al servidor
+                    </ul>
+                </p>
+                
+                <h4>¿Qué tanto soporte HTML5 tiene el navegador que utilizas?</h4>
+                <p>
+                    Utilizo firefox con mi navegador y de acuerdo a html5test.com mi navegador soporta 522/571 funciones evaluadas.
+                </p>
+                
+                <h4>¿Cuál es el ciclo de vida de los sistemas de información?</h4>
+                <p>
+                    El ciclo de vida de los sistemas de información sigue las siguientes fases:
+                    <ol>
+                        <li>Fase de planificación: Se establecen los objetivos del proyecto, se identifican los recursos necesarios y se elabora un plan detallado
+                        <li>Fase de análisis: Se recopilan y evalúan los requisitos del sistema. 
+                        <li>Fase de diseño: La creación de la arquitectura del sistema basada en los requisitos establecidos en la fase de análisis
+                        <li>Fase de desarrollo: Se escribe el código del sistema según las especificaciones del diseño
+                        <li>Fase de pruebas: Se realizan pruebas de unidad, integración y sistema para identificar y corregir posibles errores y garantizar la estabilidad del sistema.
+                        <li>Fase de implementación: Se realiza la instalación y la formación del personal para que pueda utilizar el nuevo sistema de manera efectiva.
+                        <li>Fase de mantenimiento: Se centra en corregir errores, realizar mejoras y adaptarse a cambios en los requisitos del usuario, la duración de esta fase debe ser significativo para asegurarse que el sistema funciona de forma correcta
+                    </ol>
+                    (KeepCoding, 2023)
+                </p>
+
+                <h4>¿Cuál es el ciclo de desarrollo de sistemas de información?</h4>
+                <p>
+                    El ciclo de desarrollo de un sistema es el mismo que el ciclo de vida, pero este se detiene despues de la etapa de pruebas.
+                </p>
+            </div>
+
+            <div id="lab3">
+                <h2>Laboratorio 3: CSS</h2>
+                <h4>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? </h4>
+                <p>
+                    !important casi no debería usarse porque como tiene preferecnia sobre <strong> CUALQUIER</strong> selector es fácil sobreescribir reglas que no querías y que necesites utilizar muchos !important y que tu CSS quede hecho un desastre,
+                    esto no significa que no se pueda usar nunca hay casos específicos donde puede ser útil si se usa concuidado, por ejemplo si tienes un elemento de una clase dentro de un div con una ID lo puedes usar para forzar a que use el formato de la clase.
+                </p>
+                
+                <h4>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</h4>
+                <p>
+                    Las imágenes pueden ser muy pesadas, así que usar una para el fondo puede realentizar la página, además dependiendo de la imágen puede no adaptarse bien a cambios en el tamaño de la pantalla y no vesre bien en dispositivos móviles,
+                    además si la imágen es de un color similar al texto o si tiene musho ruido puede hacer difícil leer texto que pueda tener encima.
+                </p>
+
+                <h4>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?</h4>
+                <p>
+                    Considero que las mejores unidades son % y px, px te permite ser preciso respecto al tamaño, por lo que para elementos que raramente cambian de tamaño según la pantalla como bordes en elementos es útil,
+                    en cambio % permite que los elementos se adapten al tamaño del contenedor, esto permite que si se cambia el tamaño de la pantalla los emementos pueden ajustar su tamaño para permanecer a la misma proporción
+                    y mantener el diseño de la página.
+                </p>
+                
+                <h4>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</h4>
+                <p>
+                    Porque mientras hacemos el css le damos un cierto formato con espacios en blanco como nuevas líneas y tabuladores, estos espacios hacen que el navegador tenga que descargar y procesar menos infroamción, agilizando el rendimiento de la página.
+                </p>
+            </div>
+
+            <div id="lab4">
+                <h2>Laboratorio 4: Fundamentos de JavaScript</h2>
+
+                <h4>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h4>
+                <p>
+                    Ambos se relacionan en el sentido de que ambos son lenguajes orientados a objetos, pero en el resto se diferencían mucho. Java es un programa que debe compilarse, mientras que JavaScript solo es interpretado,
+                    las variables de Java solo pueden almacenar un solo tipo de datos, mientras que en JavaScript este no es el caso y la misma variable puede tener varios tipos de dato, Java se ejecuta en su propia máquina virtual y JavaScript se ejecuta en navegadores
+                </p>
+
+                <h4>¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)</h4>
+                <p>
+                    <ul>
+                        <li>getDate() Regresa el número del día de la fecha indicada de actuerdo al tiempo actual
+                        <li>getDay() Regresa el día de la semana de la fecha indicada, el resultado es un número del 1-7 representando uno de los días de la semana
+                        <li>getTimezoneOffset()Toma una fecha, la evalúa en UTC y regresa la diferencia entre la fecha indicada y el horario actual
+                        <li>now() Regresa los milisegundos que han pasado desde el 1° de enero de 1970
+                        <li>parse() Toma un string con una fecha y regresa el número de milisagundos al igual que now()
+                    </ul>
+                </p>
+
+                <h4>¿Qué métodos tienen los arreglos? (Menciona al menos 5*)</h4>
+                <p>
+                    <ul>
+                        <li>push() Añade el elemento indicado al final del arreglo
+                        <li>pop() Elimina el último elemento del arreglo y lo regresa
+                        <li>slice() Regresa una copia del intervalo indicado del arreglo, esto no modifica el arreglo
+                        <li>fill() Cambia los valores de un arreglo por el valor indicado a partir del índice indicado
+                        <li>filter() Crea un nuevo arreglo con los valores que cumplan la condición
+                    </ul>
+                </p>
+
+                <h4>¿Cómo se declara una variable con alcance local dentro de una función?</h4>
+                <p>
+                    Par declarar una variable se puede utilizar tanto var como let, para declarar una variable local se debe usar let.
+                </p>
+
+                <h4>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h4>
+                <p>
+                    Que una variable que solo debería existir dentro de la ejecución de una variable va a existir en todo el programa, esto puede causar problemas con redefinir la misma variable y ocupa más espacio ya que las variables nunca desaparecen.
+                </p>
+            </div>
+
+            <div id="lab5">
+                <h2>Lab 5: Frameworks de estilo</h2>
+
+                <h4>Describe Material design</h4>
+                <p>
+                    Es un sistema de lienamientos, componentes y herramientas desarrollado pod Google para ayudar con el desarrollo para Android, iOS, Flutter y la web
+                </p>
+            </div>
+
+            <div id="lab6">
+                <h2>Lab 6: Programación orientada a eventos</h2>
+                
+                <h4>¿Por qué es una buena práctica usar JavaScript para checar que sean válidos los inputs de las formas antes de enviar los datos al servidor?</h4>
+                <p>
+                    Porque es posible añadir el atributo novalidate al form o al botón de submit y saltarse enviar datos válidos y para facilitar que el usuario pueda corregir errores en su submisión.
+                </p>
+    
+                <h4>¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?</h4>
+                <p>
+                    Puedes desactivar el JavaScript del navegador desde las opciones del navegador para que cuando subas datos no ejecute el script.
+                </p>
+
+                <h4>Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces ¿por qué la primera pregunta dice que es una buena práctica?</h4>
+                <p>
+                    Porque a pesar de no ser tan segura ayuda a mejorar la experiencia del usuario y evitar el retraso de que la información tenga que viajar desde el usuario hasta el servidor y de regreso.
+                </p>
+            </div>
+
+            <div id="referencias">
+                <br>
+                <h2>Referencias: </h2>
+                <ol>
+                    <li>testdevelocidad.es. (2020). <em>Internet vs WWW: en qué se diferencian.</em> Recuperado de: <a href="https://www.testdevelocidad.es/2020/09/25/diferencias-internet-www/">https://www.testdevelocidad.es/2020/09/25/diferencias-internet-www/.</a> 
+                    <li>IBM. (2024). <em>The components of a URL.</em> Recuperado de: <a href="https://www.ibm.com/docs/en/cics-ts/6.1?topic=concepts-components-url">https://www.ibm.com/docs/en/cics-ts/6.1?topic=concepts-components-url.</a>
+                    <li>Tutorialspoint. (s.f.). <em>HTTP - Methods.</em> Recuperado de: <a href="https://www.tutorialspoint.com/http/http_methods.htm">https://www.tutorialspoint.com/http/http_methods.htm.</a>
+                    <li>Mozilla (s.f.). <em>Métodos de petición HTTP.</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods">https://developer.mozilla.org/es/docs/Web/HTTP/Methods.</a>
+                    <li>Tutorialspoint. (s.f.). <em>HTTP - Status Codes.</em> Recuperado de: <a href="https://www.tutorialspoint.com/http/http_status_codes.htm">https://www.tutorialspoint.com/http/http_status_codes.htm.</a>
+                    <li>Barrena A. (2016). <em>Lista de elementos y atributos obsoletos en HTML5.</em> Recuperado de: <a href="https://www.anerbarrena.com/elementos-atributos-obsoletos-html5-5165/">https://www.anerbarrena.com/elementos-atributos-obsoletos-html5-5165/.</a>
+                    <li>Sooluciona. (s.f.). <em>Diferencias entre HTML4 y HTML5</em> Recuperado de: <a href="https://sooluciona.com/diferencias-entre-html4-y-html5/">https://sooluciona.com/diferencias-entre-html4-y-html5/.</a>
+                    <li>Mozilla. (s.f.). <em>Estilizando tablas</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables.</a>
+                    <li>Mozilla. (s.f.). <em>Controles de formulario originales</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls">https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls.</a>
+                    <li>KeepCoding. (2023). <em>¿Qué es el ciclo de vida del desarrollo del sistema?</em> Recuperado de: <a href="https://keepcoding.io/blog/ciclo-de-vida-del-desarrollo-del-sistema/">https://keepcoding.io/blog/ciclo-de-vida-del-desarrollo-del-sistema/.</a>
+                    <li>w3schools. (s.f.). <em>CSS The !important Rule</em> Recuperado de: <a href="https://www.w3schools.com/css/css_important.asp">https://www.w3schools.com/css/css_important.asp.</a>
+                    <li>Mozilla. (s.f.). <em>Valores y unidades CSS</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Values_and_units">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Values_and_units.</a>
+                    <li>Material Design. (s.f.). <em>Inroduction</em> Recuperado de: <a href="https://m2.material.io/design/introduction">https://m2.material.io/design/introduction.</a>
+                    <li>Universidad Europea. (2022). <em>Diferencias entre Java y JavaScript</em> Recuperado de: <a href="https://universidadeuropea.com/blog/diferencias-entre-java-y-javascript/">https://universidadeuropea.com/blog/diferencias-entre-java-y-javascript./</a>
+                    <li>Mozilla. (s.f.). <em>Date</em> Recuperado de: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date.</a>
+                    <li>Mozilla. (s.f.). <em>Array</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array">https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array.</a>
+                    <li>Folgado L. (2020). <em>¿Es seguro validar un formulario con Javascript?</em> Recuperado de: <a href="https://didacticode.com/seguro-validar-formulario-javascript/">https://didacticode.com/seguro-validar-formulario-javascript/</a>
+                </ol>
+            </div>
+        </section>
+            `)
+            response.write(html_footer)  
+            response.end()
+    }else if(request.url == "/validar" && request.method == "GET") {
+        response.setHeader("Content-Type","text/html")
+        response.write(html_header)
+        response.write(`
+        <div class="callout">
+            <h1>Valida tu contraseña</h1>
+
+            <p>
+                Tu contraseña debe tener el menos:
+                <ul>
+                    <li>10 carascteres</li>
+                    <li>Letras en mayúscula y minuscula</li>
+                    <li>Números</li>
+                    <li>caracteres especiales ($, @, %, &, etc.)</li>
+                </ul>
+            </p>
+
+            <div class = "grid-x grid-padding-x">
+                <div class="medium-4 large-4 small-4 cell">
+                    Ingresa tu contraseña<br>
+                    Vuelve a ingresar tu contraseña
+                </div>
+                <div class="medium-4 large-4 small-4 cell">
+                    <form action="/validar" method="POST">
+                        <input id="pswrd" name="pswrd" type="password">
+                        <input id="pswrd_confirm" name="pswrd_confirm" type="password">
+                        <span id="similitud">                            
+                            <br>La contraseña no concuerda
+                        </span><br>
+                        <input id="hidden" name="hidden" type="hidden">
+                        <button type="submit" id="submit" value="Contraseña">Confirmar</button>
+                    </form>
+                </div>
+                <div class="medium-4 large-4 small-4 cell">
+                    <span id="fortaleza"></span>
+                </div>
+            </div>
+        </div>
+        <script>
+            const button = document.getElementById("submit")
+            const hidden = document.getElementById("hidden")
+            const input_1 = document.getElementById("pswrd")
+            const input_2 = document.getElementById("pswrd_confirm")
+            const verify = document.getElementById("similitud")
+            const fuerte = document.getElementById("fortaleza")
+            verify.style.visibility = "hidden"
+
+            setInterval(function() {
+                
+                    if (input_1.value){
+                    
+                        let caracteres = revisar(input_1.value)
+
+                        if (input_1.value.length < 10){
+                            fuerte.innerHTML = "Débil"
+                            fuerte.style.color = "red"
+                        }else if (input_1.value.length >= 13 && caracteres.letras_may > 1 && caracteres.letras_min > 1 && caracteres.num > 1 && caracteres.special > 1) {
+                            fuerte.innerHTML = "Fuerte"
+                            fuerte.style.color = "green"
+                        }else{
+                            fuerte.innerHTML = "Suficiente"
+                            fuerte.style.color = "rgb(125, 166, 41)"
+                        }
+                    }
+                },1000)
+
+
+            button.onclick = () => {
+                let password = input_1.value
+                let p_confirm = input_2.value
+
+                let caracteres = revisar(input_1.value)
+
+                if (input_1.value != input_2.value){
+                    verify.style.visibility = "visible"
+                    hidden.value = "La contrasena no concuerda"
+                    return
+                }else{
+                    verify.style.visibility = "hidden"
+                }
+
+                if (input_1.value.length < 10 || caracteres.letras_may < 1 || caracteres.letras_min < 1 || caracteres.num < 1 || caracteres.special < 1){
+                    hidden.value = "Contrasena no valida"
+                }else{
+                    hidden.value = "Contrasena valida"
+                }
+            }
+
+            function revisar(pswrd)
+            {
+                let temp
+                const resp = {letras_min:0, letras_may:0, num:0, special:0}
+
+                for (let i = 0; i < pswrd.length; i++){
+                    temp = pswrd.charCodeAt(i)
+
+                    if (temp >= 48 && temp <= 57){
+                        resp.num++
+                    }else if (temp >= 65 && temp <= 90) {
+                        resp.letras_may++
+                    }else if (temp >= 97 && temp <= 122) {
+                        resp.letras_min++
+                    }else{
+                        resp.special++
+                    }
+                }
+
+                return resp
+            }
+        </script>
+        `)
+        response.write(html_footer)
+        response.end()
+    }else if(request.url == "/validar" && request.method == "POST") {
+        const datos =[]
+
+        request.on("data",(dato) =>{
+            datos.push(dato)
+        })
+        
+        request.on("end",() =>{
+            const datos_completos = Buffer.concat(datos).toString();
+            let pass = "Contraseña " + datos_completos.split('&')[0].split('=')[1] + " ";
+  
+            pass += "Validar contraseña " + datos_completos.split('&')[1].split('=')[1] + " ";
+  
+            pass += "Estado de la contraseña " + datos_completos.split('&')[2].split('=')[1];
+  
+            filesystem.writeFileSync("Contraseña.txt", pass)
+            response.end()
+        })
+        
+    }else{
+            response.statusCode = 404
+            response.setHeader("Content-Type","text/html")
+            response.write("404 La página no existe")
+            response.end()
+    }
 })
 
 servidor.listen(3000)
@@ -195,16 +599,7 @@ const armas = [
     }
 ]
 
-const servidor = http.createServer((request,response) => {
-    if (request.url == "/"){
-        console.log(request.url)
-        response.setHeader("Content-Type","text/html")
-        response.write(html_header)
-        response.write(`<h2>Lista de armas</h2>`)
-        response.write(html_footer)
-        response.end()
-        
-    }else if(request.url == "/crear"){
+}else if(request.url == "/crear"){
             response.setHeader("Content-Type","text/html")
             response.write(html_header)
             response.write(`<h2>Crear una nueva arma</h2>
@@ -226,13 +621,5 @@ const servidor = http.createServer((request,response) => {
             `)
             response.write(html_footer)  
             response.end()
-    }else{
-            response.statusCode = 404
-            response.setHeader("Content-Type","text/html")
-            response.write("404 La página no existe")
-            response.end()
     }
-})
-
-servidor.listen(3000)
 */
