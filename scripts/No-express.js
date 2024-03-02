@@ -691,7 +691,7 @@ const servidor = http.createServer((request,response) => {
                             <br>La contraseña no concuerda
                         </span><br>
                         <input id="hidden" name="hidden" type="hidden">
-                        <button type="submit" id="submit" value="Contraseña">Confirmar</button>
+                        <button type="submit" class="success button" id="submit" value="Contraseña">Confirmar</button>
                     </form>
                 </div>
                 <div class="medium-4 large-4 small-4 cell">
