@@ -521,7 +521,7 @@ const servidor = http.createServer((request,response) => {
             datos.push(dato)
         })
         
-        request.on("end",() =>{
+        return request.on("end",() =>{
             const datos_completos = Buffer.concat(datos).toString();
             let pass = "Contraseña " + datos_completos.split('&')[0].split('=')[1] + " ";
   
@@ -530,7 +530,8 @@ const servidor = http.createServer((request,response) => {
             pass += "Estado de la contraseña " + datos_completos.split('&')[2].split('=')[1];
   
             filesystem.writeFileSync("Contraseña.txt", pass)
-            response.end()
+            response.writeHead(302, { 'Location': '/' });
+            return response.end()
         })
         
     }else{
