@@ -2,7 +2,7 @@
   "name": "laboratorios_de_codigo",
   "version": "1.0.0",
   "description": "Paquete para los laboratorios de código",
-  "main": "./scripts/app.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
