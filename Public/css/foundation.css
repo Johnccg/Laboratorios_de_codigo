@@ -13,6 +13,13 @@
   }
 }
 
+img.home  {
+  background-color: aliceblue;
+}
+
+img:hover.home {
+  background-color: rgb(229, 236, 242);
+}
 
 #similitud{
   visibility: hidden;
@@ -90,14 +97,6 @@ sub {
 
 sup {
   top: -0.5em;
-}
-
-img {
-  background-color: aliceblue;
-}
-
-img:hover{
-  background-color: rgb(229, 236, 242);
 }
 
 button,

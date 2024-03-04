@@ -1,0 +1,45 @@
+<%- include('includes/head.ejs')%>
+<% let count = 0 %>
+<% let gen_id = 0 %>
+
+<% for (let i in lista_armas){ %>
+
+    <% if(count == 0){ %>
+        <div class="grid-x grid-padding-x">
+    <% } %>
+    <% count ++ %>
+    
+
+    <div class="cell large-3 medium-6 small-6">
+        <form action="/armas_lista/modificar" method="POST">
+            <img class="thumbnail" src="<%=lista_armas[i].url%>">
+            <label for="nombre">Nombre: 
+                <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].nombre%>">
+            </label>
+            <label for="clase">Clase: 
+                <input id="clase" name="clase" type="text" value="<%=lista_armas[i].clase%>">
+            </label>
+            <label for="rango">Rango: 
+                <input id="rango" name="rango" type="number" value="<%=lista_armas[i].rango%>">
+            </label>
+            <label for="dano">Daño: 
+                <input id="dano" name="dano" type="number" value="<%=lista_armas[i].dano%>">
+            </label>
+            <label for="manejo">Manejo: 
+                <input id="manejo" name="manejo" type="number" value="<%=lista_armas[i].manejo%>">
+            </label>
+            <label for="url">Url de imágen: 
+                <input id="url" name="url" type="text" value="<%=lista_armas[i].url%>">
+            </label>
+            <input id="ID" name="ID" type="hidden" value="<%=gen_id%>">
+            <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
+        </form>
+    </div>
+
+    <% if(count == 4 || i == lista_armas.length){ %>
+        </div>
+        <% count = 0 %>
+    <% } %>
+    <% gen_id++ %>
+<% } %>
+<%- include('includes/footer.ejs')%>
