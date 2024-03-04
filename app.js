@@ -12,8 +12,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 const rutasClases = require("./Router/clases.routes")
 const listaarmas = require("./Router/Listaarmas.routes")
 
-app.use("/", rutasClases)
 app.use("/armas_lista", listaarmas)
+app.use("/", rutasClases)
 
 app.use((request,response,next)=>{
     response.status(404)
