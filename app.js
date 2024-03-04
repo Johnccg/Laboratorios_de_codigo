@@ -17,7 +17,7 @@ app.use("/armas_lista", listaarmas)
 
 app.use((request,response,next)=>{
     response.status(404)
-    response.sendFile(path.join(__dirname, "views", "404.html")) //Enviar una página como un archivo
+    response.render("404")
 })
 
 app.listen(3000)

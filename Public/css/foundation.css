@@ -12,6 +12,17 @@
     margin: 0 auto;
   }
 }
+
+
+#similitud{
+  visibility: hidden;
+  color: red;
+}
+
+#logo{
+  width: 5rem;
+}
+
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
