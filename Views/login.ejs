@@ -1,0 +1,15 @@
+<%- include('includes/head.ejs'), {username: username} %>
+    <div class="primary callout">
+        <h1>Bienvenido!</h1>
+
+        <form action="/users/login" method="POST">
+            <label for="Username">Nombre de usuario: 
+                <input id="Username" name="Username" type="username">
+            </label>
+            <label for="Contrasena">Contraseña: 
+                <input id="Contrasena" name="Contrasena" type="password">
+            </label>
+            <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
+        </form>
+    </div>
+<%- include('includes/footer.ejs') %>

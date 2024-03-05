@@ -31,6 +31,16 @@
                   </li>
                 </ul>
               </div>
+              <div class="top-bar-right">
+                <div class="button-group">
+                  <% if (username == "") {%>
+                    <a href="/users/login" class="button">Login</a>
+                  <% }else {%>
+                    Hola <%= username%>
+                  <% }%>
+                  <a href="/users/logout" class="button">Logout</a>
+                </div>
+              </div>
             </div>
             <p id = "intro">Juan Carlos calderón García | A01625694 | a01625696@tec.mx</p>
         </header>

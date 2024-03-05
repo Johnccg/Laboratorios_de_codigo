@@ -1,8 +1,8 @@
-<%- include('includes/head.ejs') %>
+<%- include('includes/head.ejs'), {username: username} %>
 <section>
     <nav class="sticky-container" data-sticky-container>
-        <div class="sticky" data-sticky data-anchor="sections" data-sticky-on="large">
-            <ul class="vertical medium-horizontal menu" data-magellan id="s_menu">
+        <div class="sticky" data-sticky data-anchor="sections" data-sticky-on="large" data-margin-top="0">
+            <ul id="s_menu" class="vertical medium-horizontal menu" data-magellan data-offset="20">
                 <li><a href="#lab1">Lab1</a></li>
                 <li><a href="#lab3">Lab3</a></li> 
                 <li><a href="#lab4">Lab4</a></li>

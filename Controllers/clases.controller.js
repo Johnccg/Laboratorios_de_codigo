@@ -1,5 +1,5 @@
 exports.get_validar = (request, response, next) => {
-    response.render("validar")
+    response.render("validar", {username: request.session.username || ""})
 }
 
 exports.post_validar = (request, response, next) => {
@@ -16,9 +16,9 @@ exports.post_validar = (request, response, next) => {
 }
 
 exports.get_preguntas = (request, response, next) => {
-    response.render("preguntas")
+    response.render("preguntas", {username: request.session.username || ""})
 }
 
 exports.get_raiz = (request, response, next) => {
-    response.render("home")
+    response.render("home", {username: request.session.username || ""})
 }
