@@ -1,21 +1,25 @@
 <%- include('includes/head.ejs') %>
 <section>
-    <ul class="vertical medium-horizontal menu">
-        <li><a href="#lab1">Lab1</a></li>
-        <li><a href="#lab3">Lab3</a></li> 
-        <li><a href="#lab4">Lab4</a></li>
-        <li><a href="#lab5">Lab5</a></li> 
-        <li><a href="#lab6">Lab6</a></li>
-        <li><a href="#lab11">Lab11</a></li>
-        <li><a href="#lab12">Lab12</a></li>
-        <li><a href="#lab12">Lab12</a></li>
-        <li><a href="#referencias">Referencias</a></li>
-    </ul>
+    <nav class="sticky-container" data-sticky-container>
+        <div class="sticky" data-sticky data-anchor="sections" data-sticky-on="large">
+            <ul class="vertical medium-horizontal menu" data-magellan id="s_menu">
+                <li><a href="#lab1">Lab1</a></li>
+                <li><a href="#lab3">Lab3</a></li> 
+                <li><a href="#lab4">Lab4</a></li>
+                <li><a href="#lab5">Lab5</a></li> 
+                <li><a href="#lab6">Lab6</a></li>
+                <li><a href="#lab11">Lab11</a></li>
+                <li><a href="#lab12">Lab12</a></li>
+                <li><a href="#lab12">Lab12</a></li>
+                <li><a href="#referencias">Referencias</a></li>
+            </ul>
+        </div>
+    </nav>
 </section>
 
-<section>
+<section id = "sections">
     <h1>Preguntas</h1>
-    <div id="lab1">
+    <div id="lab1" data-magellan-target="lab1">
         <h2>Laboratorio 1: Introducción a las aplicaciones web, HTML5 y ciclo de vida de los sistemas de información</h2>
 
         <h4>¿Cuál es la diferencia entre Internet y la World Wide Web?</h4>
@@ -136,7 +140,7 @@
         </p>
     </div>
 
-    <div id="lab3">
+    <div id="lab3" data-magellan-target="lab3">
         <h2>Laboratorio 3: CSS</h2>
         <h4>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? </h4>
         <p>
@@ -163,7 +167,7 @@
         </p>
     </div>
 
-    <div id="lab4">
+    <div id="lab4" data-magellan-target="lab4">
         <h2>Laboratorio 4: Fundamentos de JavaScript</h2>
 
         <h4>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h4>
@@ -205,7 +209,7 @@
         </p>
     </div>
 
-    <div id="lab5">
+    <div id="lab5" data-magellan-target="lab5">
         <h2>Lab 5: Frameworks de estilo</h2>
 
         <h4>Describe Material design</h4>
@@ -214,7 +218,7 @@
         </p>
     </div>
 
-    <div id="lab6">
+    <div id="lab6" data-magellan-target="lab6">
         <h2>Lab 6: Programación orientada a eventos</h2>
         
         <h4>¿Por qué es una buena práctica usar JavaScript para checar que sean válidos los inputs de las formas antes de enviar los datos al servidor?</h4>
@@ -233,7 +237,7 @@
         </p>
     </div>
 
-    <div id="lab11">
+    <div id="lab11" data-magellan-target="lab11">
         <h2>Lab 11: Express</h2>
         <h4>Describe el archivo package.json</h4>
         <p>
@@ -246,7 +250,7 @@
         </p>
     </div>
 
-    <div id="lab12">
+    <div id="lab12" data-magellan-target="lab12">
         <h2>Lab 12: HTML dinámico</h2>
         <h4>¿Qué otros templating engines existen para node?</h4>
         <p>
@@ -264,7 +268,7 @@
         </p>
     </div>
 
-    <div id="lab13">
+    <div id="lab13" data-magellan-target="lab13">
         <h2>Lab 13: MVC</h2>
         <h4>¿Qué beneficios encuentras en el estilo MVC?</h4>
         <p>
@@ -278,7 +282,7 @@
         </p>
     </div>
 
-    <div id="referencias">
+    <div id="referencias" data-magellan-target="referencias">
         <br>
         <h2>Referencias: </h2>
         <ol>

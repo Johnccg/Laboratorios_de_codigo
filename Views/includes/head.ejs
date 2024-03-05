@@ -9,18 +9,28 @@
     </head>
     <body>
         <header>
+            <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+                <button class="menu-icon" type="button" data-toggle></button>
+                <div class="title-bar-title">Menu</div>
+            </div>
+              
             <div class="top-bar" id="responsive-menu">
-                <li><img id="logo" src="/video/splatoon-kirby.gif" alt="Imágen aquí"></li>
-                <div class="top-bar-left">
-                    <ul class="dropdown menu" data-dropdown-menu>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/preguntas">Preguntas</a></li>
-                        <li><a href="/validar">Validador de contraseñas</a></li>
-                        <li><a href="/armas_lista">Lista de armas</a></li>
-                        <li><a href="/armas_lista/crear">Crear arma</a></li>
-                        <li><a href="/armas_lista/modificar">Mdificar armas</a></li>
+              <li><img id="logo" src="/video/splatoon-kirby.gif" alt="Imágen aquí"></li>
+              <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/preguntas">Preguntas</a></li>
+                  <li><a href="/validar">Validador de contraseñas</a></li>
+                  <li class="has-submenu">
+                    <a href="#0">Armas</a>
+                    <ul class="submenu menu vertical" data-submenu>
+                      <li><a href="/armas_lista">Lista de armas</a></li>
+                      <li><a href="/armas_lista/crear">Crear arma</a></li>
+                      <li><a href="/armas_lista/modificar">Mdificar armas</a></li>
                     </ul>
-                </div>
+                  </li>
+                </ul>
+              </div>
             </div>
             <p id = "intro">Juan Carlos calderón García | A01625694 | a01625696@tec.mx</p>
         </header>

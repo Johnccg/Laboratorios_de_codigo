@@ -21,6 +21,10 @@ img:hover.home {
   background-color: rgb(229, 236, 242);
 }
 
+#s_menu{
+  background-color: rgb(233, 233, 233);
+}
+
 #similitud{
   visibility: hidden;
   color: red;
