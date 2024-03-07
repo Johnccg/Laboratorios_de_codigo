@@ -12,17 +12,11 @@ exports.post_crear = (request,response,next)=>{
         request.body.dano,
         request.body.manejo,
         request.body.url)
-        mi_arma.save()
-        response.setHeader('Set-Cookie', 'A_nombre=' + mi_arma.nombre + "; HttpOnly");
-    response.redirect("/armas_lista")
-}
-
-exports.get_raiz = (request,response,next) => {
-    //console.log(request.cookies)
-    response.render("lista_armas",{
-        lista_armas: Arma.fetchAll(),
-        username: request.session.username || ""
-    })
+        mi_arma.save().then(([rows, fieldData]) => {
+            response.setHeader('Set-Cookie', 'A_nombre=' + mi_arma.nombre + "; HttpOnly");
+            response.redirect("/armas_lista")
+        })
+        .catch((error) => {console.log(error)})
 }
 
 exports.get_modificar = (request, response, next) => {
@@ -42,4 +36,18 @@ exports.post_modificar = (request,response,next)=>{
         request.body.manejo,
         request.body.url)
     response.redirect("/armas_lista")
+}
+
+exports.get_raiz = (request,response,next) => {
+    //console.log(request.cookies)
+    console.log(request.params.arma_id)
+    Arma.fetch(request.params.arma_id).then(([rows, filedData]) => {
+        response.render("lista_armas",{
+            lista_armas: rows,
+            username: request.session.username || ""
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    }) 
 }

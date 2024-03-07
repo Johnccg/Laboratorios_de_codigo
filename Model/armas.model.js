@@ -1,4 +1,4 @@
-const lista_armas =[
+/*const lista_armas =[
     {
         nombre: "Splattershot",
         clase: "Shooter",
@@ -39,7 +39,9 @@ const lista_armas =[
         manejo: 55,
         url: "https://cdn.wikimg.net/en/splatoonwiki/images/thumb/5/5e/S3_Weapon_Main_Heavy_Splatling.png/384px-S3_Weapon_Main_Heavy_Splatling.png"
     }
-]
+]*/
+const db = require("../Util/database");
+
 
 module.exports = class Arma {
 
@@ -55,16 +57,28 @@ module.exports = class Arma {
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        lista_armas.push(this)
+        return db.execute(
+            `INSERT INTO Arma(Nombre,Clase,Rango,Daño,Manejo,URL)
+            VALUES(?, ?, ?, ?, ?, ?)`,
+            [this.nombre, this.clase, this.rango, this.dano, this.manejo, this.url]
+        )
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return lista_armas
+        return db.execute("Select * from Arma")
     }
 
-    static get(index){
-        console.log(lista_armas[index])
+    static fetch(id){
+        if (id){
+            return this.fetchOne(id)
+        }else{
+            return this.fetchAll()
+        }
+    }
+
+    static fetchOne(id){
+        return db.execute("SELECT * FROM Arma WHERE IDArma=?",[id])
     }
     
     static assign(index,mi_nombre, mi_clase, mi_rango, mi_dano, mi_manejo, mi_url){
