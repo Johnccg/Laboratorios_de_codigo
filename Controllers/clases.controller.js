@@ -1,16 +1,25 @@
 exports.get_validar = (request, response, next) => {
-    response.render("validar", {username: request.session.username || ""})
+    const past = request.flash("Past")[0]
+    response.render("validar", {
+        username: request.session.username || "",
+        past: past || {pswrd: "", pswrd_confirm: "", state: ""}
+    })
 }
 
 exports.post_validar = (request, response, next) => {
-    console.log(request.body)
+    /*console.log(request.body)
     let pass = "Contraseña " + request.body.pswrd + " ";
   
     pass += "Validar contraseña " + request.body.pswrd_confirm + " ";
   
     pass += "Estado de la contraseña " + request.body.hidden;
-  
-    filesystem.writeFileSync("Contraseña.txt", pass)
+    filesystem.writeFileSync("Contraseña.txt", pass)*/
+
+    request.flash("Past", {
+        pswrd: request.body.pswrd,
+        pswrd_confirm: request.body.pswrd_confirm,
+        state: request.body.hidden
+    })
     
     response.redirect("/validar")
 }

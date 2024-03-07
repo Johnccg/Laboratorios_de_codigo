@@ -4,7 +4,11 @@ const app = express()
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended: false}))
 
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 const path = require("path")
+app.use(express.static(path.join(__dirname, 'public')))
 
 const cookie = require("cookie-parser")
 app.use(cookie())
@@ -16,10 +20,8 @@ app.use(session({
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
 }))
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
-
-app.use(express.static(path.join(__dirname, 'public')))
+const flash = require("connect-flash")
+app.use(flash())
 
 
 

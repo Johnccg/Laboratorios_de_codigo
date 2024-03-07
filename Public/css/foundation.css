@@ -25,9 +25,8 @@ img:hover.home {
   background-color: rgb(233, 233, 233);
 }
 
-#similitud{
-  visibility: hidden;
-  color: red;
+#no_concuerda{
+  color: red !important; 
 }
 
 #logo{
