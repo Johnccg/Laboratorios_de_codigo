@@ -1,6 +1,5 @@
 <%- include('includes/head.ejs'), {username: username} %>
 <% let count = 0 %>
-<% let gen_id = 0 %>
 
 <% for (let i in lista_armas){ %>
 
@@ -8,30 +7,29 @@
         <div class="grid-x grid-padding-x">
     <% } %>
     <% count ++ %>
-    
 
     <div class="cell large-3 medium-6 small-6">
         <form action="/armas_lista/modificar" method="POST">
-            <img class="thumbnail" src="<%=lista_armas[i].url%>">
+            <img class="thumbnail" src="<%=lista_armas[i].URL%>">
             <label for="nombre">Nombre: 
-                <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].nombre%>">
+                <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].Nombre%>">
             </label>
             <label for="clase">Clase: 
-                <input id="clase" name="clase" type="text" value="<%=lista_armas[i].clase%>">
+                <input id="clase" name="clase" type="text" value="<%=lista_armas[i].Clase%>">
             </label>
             <label for="rango">Rango: 
-                <input id="rango" name="rango" type="number" value="<%=lista_armas[i].rango%>">
+                <input id="rango" name="rango" type="number" value="<%=lista_armas[i].Rango%>">
             </label>
             <label for="dano">Daño: 
-                <input id="dano" name="dano" type="number" value="<%=lista_armas[i].dano%>">
+                <input id="dano" name="dano" type="number" value="<%=lista_armas[i].Daño%>">
             </label>
             <label for="manejo">Manejo: 
-                <input id="manejo" name="manejo" type="number" value="<%=lista_armas[i].manejo%>">
+                <input id="manejo" name="manejo" type="number" value="<%=lista_armas[i].Manejo%>">
             </label>
             <label for="url">Url de imágen: 
-                <input id="url" name="url" type="text" value="<%=lista_armas[i].url%>">
+                <input id="url" name="url" type="text" value="<%=lista_armas[i].URL%>">
             </label>
-            <input id="ID" name="ID" type="hidden" value="<%=gen_id%>">
+            <input id="ID" name="ID" type="hidden" value="<%=lista_armas[i].IDArma%>">
             <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
         </form>
     </div>
@@ -40,6 +38,5 @@
         </div>
         <% count = 0 %>
     <% } %>
-    <% gen_id++ %>
 <% } %>
 <%- include('includes/footer.ejs')%>

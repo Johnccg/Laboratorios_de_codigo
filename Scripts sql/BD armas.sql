@@ -40,7 +40,6 @@ values
 ("Slosher", "Slosher", 58, 85, 50, "https://cdn.wikimg.net/en/splatoonwiki/images/thumb/4/42/S3_Weapon_Main_Slosher.png/384px-S3_Weapon_Main_Slosher.png"),
 ("Heavy Splatling", "Splatling", 78, 38, 55, "https://cdn.wikimg.net/en/splatoonwiki/images/thumb/5/5e/S3_Weapon_Main_Heavy_Splatling.png/384px-S3_Weapon_Main_Heavy_Splatling.png");
 
-
 insert into Usuario(Nombre, Username, Contraseña)
 values("Juan Carlos","Johnccg","Hola1234");
 

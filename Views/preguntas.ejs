@@ -10,7 +10,8 @@
                 <li><a href="#lab6">Lab6</a></li>
                 <li><a href="#lab11">Lab11</a></li>
                 <li><a href="#lab12">Lab12</a></li>
-                <li><a href="#lab12">Lab12</a></li>
+                <li><a href="#lab13">Lab13</a></li>
+                <li><a href="#lab17">Lab17</a></li>
                 <li><a href="#referencias">Referencias</a></li>
             </ul>
         </div>
@@ -282,6 +283,22 @@
         </p>
     </div>
 
+    <div id="lab17" data-magellan-target="lab17">
+        <h2>Lab 17: Interacción con la base de datos</h2>
+        <h4>¿Qué ventajas tiene escribir el código SQL únicamente en la capa del modelo?</h4>
+        <p>
+            Mantienes archivos que hacen solo una función, los modelos se encargan del manejo de los datos, por lo que el modelo es el que debería encargarse de interactuar con la base de datos para
+            que sepas fácilmente en qué parte de tu código está el código de sql por si hay algún error o necesitas modificar algo.
+        </p>
+        <h4>¿Qué es SQL injection y cómo se puede prevenir?</h4>
+        <p>
+            La SQL inyection es cuando le pides un input al usuario y el usuario pone un comando de sql en el input y este se ejecuta, por elemplo si tienes una consulta así:<br>
+            <em>SELECT * FROM Usuarios WHERE nombre = input_del_usuario</em><br>
+            El usuario puede añadir una condición que siempre es cierta en un or como <em>OR 1=1</em> o <em>OR ""=""</em> y obtener todos los datos de la tabla, o el clásico <em>DROP TABLE</em>.<br>
+            Para evitar esto se utilizan SQL parameters que reemplazan lo que iría en <em>input_del_usuario</em> para tener más control sobre qué es lo que se incluye en el código de SQL.
+        </p>
+    </div>
+
     <div id="referencias" data-magellan-target="referencias">
         <br>
         <h2>Referencias: </h2>
@@ -292,19 +309,20 @@
             <li>Mozilla (s.f.). <em>Métodos de petición HTTP.</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods">https://developer.mozilla.org/es/docs/Web/HTTP/Methods.</a></li>
             <li>Tutorialspoint. (s.f.). <em>HTTP - Status Codes.</em> Recuperado de: <a href="https://www.tutorialspoint.com/http/http_status_codes.htm">https://www.tutorialspoint.com/http/http_status_codes.htm.</a></li>
             <li>Barrena A. (2016). <em>Lista de elementos y atributos obsoletos en HTML5.</em> Recuperado de: <a href="https://www.anerbarrena.com/elementos-atributos-obsoletos-html5-5165/">https://www.anerbarrena.com/elementos-atributos-obsoletos-html5-5165/.</a></li>
-            <li>Sooluciona. (s.f.). <em>Diferencias entre HTML4 y HTML5</em> Recuperado de: <a href="https://sooluciona.com/diferencias-entre-html4-y-html5/">https://sooluciona.com/diferencias-entre-html4-y-html5/.</a></li>
-            <li>Mozilla. (s.f.). <em>Estilizando tablas</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables.</a></li>
-            <li>Mozilla. (s.f.). <em>Controles de formulario originales</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls">https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls.</a></li>
+            <li>Sooluciona. (s.f.). <em>Diferencias entre HTML4 y HTML5.</em> Recuperado de: <a href="https://sooluciona.com/diferencias-entre-html4-y-html5/">https://sooluciona.com/diferencias-entre-html4-y-html5/.</a></li>
+            <li>Mozilla. (s.f.). <em>Estilizando tablas.</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Styling_tables.</a></li>
+            <li>Mozilla. (s.f.). <em>Controles de formulario originales.</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls">https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls.</a></li>
             <li>KeepCoding. (2023). <em>¿Qué es el ciclo de vida del desarrollo del sistema?</em> Recuperado de: <a href="https://keepcoding.io/blog/ciclo-de-vida-del-desarrollo-del-sistema/">https://keepcoding.io/blog/ciclo-de-vida-del-desarrollo-del-sistema/.</a></li>
-            <li>w3schools. (s.f.). <em>CSS The !important Rule</em> Recuperado de: <a href="https://www.w3schools.com/css/css_important.asp">https://www.w3schools.com/css/css_important.asp.</a></li>
-            <li>Mozilla. (s.f.). <em>Valores y unidades CSS</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Values_and_units">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Values_and_units.</a></li>
-            <li>Material Design. (s.f.). <em>Inroduction</em> Recuperado de: <a href="https://m2.material.io/design/introduction">https://m2.material.io/design/introduction.</a></li>
-            <li>Universidad Europea. (2022). <em>Diferencias entre Java y JavaScript</em> Recuperado de: <a href="https://universidadeuropea.com/blog/diferencias-entre-java-y-javascript/">https://universidadeuropea.com/blog/diferencias-entre-java-y-javascript./</a></li>
-            <li>Mozilla. (s.f.). <em>Date</em> Recuperado de: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date.</a></li>
-            <li>Mozilla. (s.f.). <em>Array</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array">https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array.</a></li>
-            <li>Folgado L. (2020). <em>¿Es seguro validar un formulario con Javascript?</em> Recuperado de: <a href="https://didacticode.com/seguro-validar-formulario-javascript/">https://didacticode.com/seguro-validar-formulario-javascript/</a></li>
-            <li>npm Docs. (2024). <em>package.json</em> Recuperado de: <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-json">https://docs.npmjs.com/cli/v10/configuring-npm/package-json</a></li>
-            <li>Express. (s.f.). <em>Template engines</em> Recuperado de: <a href="https://expressjs.com/en/resources/template-engines.html">https://expressjs.com/en/resources/template-engines.html</a></li>
+            <li>w3schools. (s.f.). <em>CSS The !important Rule.</em> Recuperado de: <a href="https://www.w3schools.com/css/css_important.asp">https://www.w3schools.com/css/css_important.asp.</a></li>
+            <li>Mozilla. (s.f.). <em>Valores y unidades CSS.</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Values_and_units">https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Values_and_units.</a></li>
+            <li>Material Design. (s.f.). <em>Inroduction.</em> Recuperado de: <a href="https://m2.material.io/design/introduction">https://m2.material.io/design/introduction.</a></li>
+            <li>Universidad Europea. (2022). <em>Diferencias entre Java y JavaScript.</em> Recuperado de: <a href="https://universidadeuropea.com/blog/diferencias-entre-java-y-javascript/">https://universidadeuropea.com/blog/diferencias-entre-java-y-javascript./</a></li>
+            <li>Mozilla. (s.f.). <em>Date.</em> Recuperado de: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date.</a></li>
+            <li>Mozilla. (s.f.). <em>Array.</em> Recuperado de: <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array">https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array.</a></li>
+            <li>Folgado L. (2020). <em>¿Es seguro validar un formulario con Javascript?</em> Recuperado de: <a href="https://didacticode.com/seguro-validar-formulario-javascript/">https://didacticode.com/seguro-validar-formulario-javascript/.</a></li>
+            <li>npm Docs. (2024). <em>package.json.</em> Recuperado de: <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-json">https://docs.npmjs.com/cli/v10/configuring-npm/package-json.</a></li>
+            <li>Express. (s.f.). <em>Template engines.</em> Recuperado de: <a href="https://expressjs.com/en/resources/template-engines.html">https://expressjs.com/en/resources/template-engines.html.</a></li>
+            <li>w3schools. (s.f.) <em>SQL Injection.</em> Recuperado de: <a href="https://www.w3schools.com/sql/sql_injection.asp">https://www.w3schools.com/sql/sql_injection.asp.</a></li>
         </ol>
     </div>
 </section>

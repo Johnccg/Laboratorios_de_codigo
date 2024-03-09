@@ -82,11 +82,13 @@ module.exports = class Arma {
     }
     
     static assign(index,mi_nombre, mi_clase, mi_rango, mi_dano, mi_manejo, mi_url){
-        lista_armas[index].nombre = mi_nombre
-        lista_armas[index].clase = mi_clase
-        lista_armas[index].rango = mi_rango
-        lista_armas[index].dano = mi_dano
-        lista_armas[index].manejo = mi_manejo
-        lista_armas[index].url = mi_url
+        return db.execute(`UPDATE Arma
+        SET Nombre = ?,
+        Clase = ?,
+        Rango = ?,
+        Daño = ?,
+        Manejo = ?,
+        URL = ?
+        WHERE IDArma = ?`,[mi_nombre, mi_clase, mi_rango, mi_dano, mi_manejo, mi_url, index])
     }
 }

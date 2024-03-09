@@ -20,10 +20,16 @@ exports.post_crear = (request,response,next)=>{
 }
 
 exports.get_modificar = (request, response, next) => {
-    response.render("modificar",{
-        lista_armas: Arma.fetchAll(),
-        username: request.session.username || ""
+    Arma.fetchAll().then(([rows, fieldData]) => {
+        response.render("modificar",{
+            lista_armas: rows,
+            username: request.session.username || ""
+        })
     })
+    
+    .catch((error) => {
+        console.log(error)
+    }) 
 }
 
 exports.post_modificar = (request,response,next)=>{
@@ -34,13 +40,18 @@ exports.post_modificar = (request,response,next)=>{
         request.body.rango,
         request.body.dano,
         request.body.manejo,
-        request.body.url)
-    response.redirect("/armas_lista")
+        request.body.url).then(([rows, fieldData]) => {
+            console.log(rows)
+            response.redirect("/armas_lista")
+        })
+        .catch((error) => {
+            console.log(error)
+        }) 
 }
 
 exports.get_raiz = (request,response,next) => {
     //console.log(request.cookies)
-    console.log(request.params.arma_id)
+    //console.log(request.params.arma_id)
     Arma.fetch(request.params.arma_id).then(([rows, filedData]) => {
         response.render("lista_armas",{
             lista_armas: rows,
