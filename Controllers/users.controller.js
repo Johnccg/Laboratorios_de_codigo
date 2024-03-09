@@ -10,5 +10,7 @@ exports.post_login = (request, response, next) => {
 }
 
 exports.get_logout = (request, response, next) => {
-    response.redirect("/users/login")
+    request.session.destroy(() => {
+        response.redirect("/users/login")
+    })
 }
