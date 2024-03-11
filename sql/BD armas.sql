@@ -41,10 +41,10 @@ values
 ("Heavy Splatling", "Splatling", 78, 38, 55, "https://cdn.wikimg.net/en/splatoonwiki/images/thumb/5/5e/S3_Weapon_Main_Heavy_Splatling.png/384px-S3_Weapon_Main_Heavy_Splatling.png");
 
 insert into Usuario(Nombre, Username, Contraseña)
-values("Juan Carlos","Johnccg","Hola1234");
+values("John Doe","JohnDDD","Hola1234");
 
 insert into Arma_Usuario(IDArma, Username)
-values(1,"Johnccg");
+values(1,"JohnDDD");
 
 select *
-from Arma
+from Usuario

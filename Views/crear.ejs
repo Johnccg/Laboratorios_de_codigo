@@ -4,22 +4,22 @@
 
         <form action="/armas_lista/crear" method="POST">
             <label for="nombre">Nombre: 
-                <input id="nombre" name="nombre" type="text">
+                <input id="nombre" name="nombre" type="text" required>
             </label>
             <label for="clase">Clase: 
-                <input id="clase" name="clase" type="text">
+                <input id="clase" name="clase" type="text" required>
             </label>
             <label for="rango">Rango: 
-                <input id="rango" name="rango" type="number">
+                <input id="rango" name="rango" type="number" required>
             </label>
             <label for="dano">Daño: 
-                <input id="dano" name="dano" type="number">
+                <input id="dano" name="dano" type="number" required>
             </label>
             <label for="manejo">Manejo: 
-                <input id="manejo" name="manejo" type="number">
+                <input id="manejo" name="manejo" type="number" required>
             </label>
             <label for="url">Url de imágen: 
-                <input id="url" name="url" type="text">
+                <input id="url" name="url" type="text" required>
             </label>
             <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
         </form>

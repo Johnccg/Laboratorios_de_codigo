@@ -35,9 +35,10 @@
                 <div class="button-group">
                   <% if (username == "") {%>
                     <a href="/users/login" class="button">Login</a>
+                    <a href="/users/signup" class="button">Sign up</a>
                   <% }else {%>
-                    Hola <%= username%>
-                    <a href="/users/logout" class="button">Logout</a>
+                    <p class="text_button">Hola <%= username%></p>
+                    <a href="/users/logout" class="button" style="vertical-align: middle;">Logout</a>
                   <% }%>
                 </div>
               </div>

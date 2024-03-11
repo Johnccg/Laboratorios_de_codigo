@@ -12,22 +12,22 @@
         <form action="/armas_lista/modificar" method="POST">
             <img class="thumbnail" src="<%=lista_armas[i].URL%>">
             <label for="nombre">Nombre: 
-                <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].Nombre%>">
+                <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].Nombre%>" required>
             </label>
             <label for="clase">Clase: 
-                <input id="clase" name="clase" type="text" value="<%=lista_armas[i].Clase%>">
+                <input id="clase" name="clase" type="text" value="<%=lista_armas[i].Clase%>" required>
             </label>
             <label for="rango">Rango: 
-                <input id="rango" name="rango" type="number" value="<%=lista_armas[i].Rango%>">
+                <input id="rango" name="rango" type="number" value="<%=lista_armas[i].Rango%>" required>
             </label>
             <label for="dano">Daño: 
-                <input id="dano" name="dano" type="number" value="<%=lista_armas[i].Daño%>">
+                <input id="dano" name="dano" type="number" value="<%=lista_armas[i].Daño%>" required>
             </label>
             <label for="manejo">Manejo: 
-                <input id="manejo" name="manejo" type="number" value="<%=lista_armas[i].Manejo%>">
+                <input id="manejo" name="manejo" type="number" value="<%=lista_armas[i].Manejo%>" required>
             </label>
             <label for="url">Url de imágen: 
-                <input id="url" name="url" type="text" value="<%=lista_armas[i].URL%>">
+                <input id="url" name="url" type="text" value="<%=lista_armas[i].URL%>" required>
             </label>
             <input id="ID" name="ID" type="hidden" value="<%=lista_armas[i].IDArma%>">
             <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>

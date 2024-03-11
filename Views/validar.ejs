@@ -21,21 +21,17 @@
                 <form action="/validar" method="POST">
                     <div class="input-group">
                         <input class="input-group-field" id="pswrd" name="pswrd" type="text" value="<%=past.pswrd%>" required>
-                        <div class="input-group-button">
-                          <input type="button" class="button" value="visibility">
-                        </div>
                     </div>
                     <div class="input-group">
                         <input class="input-group-field" id="pswrd_confirm" name="pswrd_confirm" type="password" value="<%=past.pswrd_confirm%>" required>
-                        <div class="input-group-button">
-                          <input type="button" class="button" value="visibility">
-                        </div>
                     </div>
                     <% if (past.state == "No concuerda"){ %>
-                        <span id="no_concuerda">                            
-                            <br>La contraseña no concuerda
+                        <span class="callout alert" id="no_concuerda">
+                            La contraseña no concuerda
                         </span>
                     <% } %>
+                        <br>
+                        <br>
                         <br>
                     <input id="hidden" name="hidden" type="hidden">
                     <button type="submit" class="success button" id="submit" value="Contraseña">Confirmar</button>

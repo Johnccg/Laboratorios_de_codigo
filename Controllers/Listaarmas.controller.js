@@ -12,7 +12,7 @@ exports.post_crear = (request,response,next)=>{
         request.body.dano,
         request.body.manejo,
         request.body.url)
-        mi_arma.save().then(([rows, fieldData]) => {
+        mi_arma.save().then(() => {
             response.setHeader('Set-Cookie', 'A_nombre=' + mi_arma.nombre + "; HttpOnly");
             response.redirect("/armas_lista")
         })
