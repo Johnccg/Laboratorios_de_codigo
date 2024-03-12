@@ -33,6 +33,11 @@ img:hover.home {
   width: 5rem;
 }
 
+#login{
+  max-width: 50%;
+  margin: auto;
+}
+
 .text_button{
   margin: 0 1px 0 0;
   padding: 0.85em 1em;

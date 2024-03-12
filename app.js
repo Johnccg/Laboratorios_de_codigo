@@ -23,7 +23,9 @@ app.use(session({
 const flash = require("connect-flash")
 app.use(flash())
 
-
+const csrf = require("csurf")
+const csrfProtection = csrf()
+app.use(csrfProtection);
 
 
 const rutasClases = require("./Router/clases.routes")

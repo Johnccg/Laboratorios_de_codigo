@@ -19,20 +19,18 @@
             </div>
             <div class="medium-4 large-4 small-4 cell">
                 <form action="/validar" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <div class="input-group">
-                        <input class="input-group-field" id="pswrd" name="pswrd" type="text" value="<%=past.pswrd%>" required>
+                        <input class="input-group-field" id="pswrd" name="pswrd" type="text" value="<%=past.pswrd%>" autocomplete=off required>
                     </div>
                     <div class="input-group">
                         <input class="input-group-field" id="pswrd_confirm" name="pswrd_confirm" type="password" value="<%=past.pswrd_confirm%>" required>
                     </div>
                     <% if (past.state == "No concuerda"){ %>
-                        <span class="callout alert" id="no_concuerda">
+                        <div class="callout alert" id="no_concuerda">
                             La contraseña no concuerda
-                        </span>
+                        </div>
                     <% } %>
-                        <br>
-                        <br>
-                        <br>
                     <input id="hidden" name="hidden" type="hidden">
                     <button type="submit" class="success button" id="submit" value="Contraseña">Confirmar</button>
                 </form>

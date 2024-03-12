@@ -1,7 +1,10 @@
 const Arma = require("../Model/armas.model")
 
 exports.get_crear = (request, response, next) => {
-    response.render("crear", {username: request.session.username || ""})
+    response.render("crear", {
+        username: request.session.username || "",
+        csrfToken: request.csrfToken()
+    })
 }
 
 exports.post_crear = (request,response,next)=>{
@@ -23,7 +26,8 @@ exports.get_modificar = (request, response, next) => {
     Arma.fetchAll().then(([rows, fieldData]) => {
         response.render("modificar",{
             lista_armas: rows,
-            username: request.session.username || ""
+            username: request.session.username || "",
+            csrfToken: request.csrfToken(),
         })
     })
     

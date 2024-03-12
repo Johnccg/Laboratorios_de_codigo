@@ -3,11 +3,12 @@
         <h1>Añade un arma</h1>
 
         <form action="/armas_lista/crear" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <label for="nombre">Nombre: 
-                <input id="nombre" name="nombre" type="text" required>
+                <input id="nombre" name="nombre" type="text" autocomplete=off required>
             </label>
             <label for="clase">Clase: 
-                <input id="clase" name="clase" type="text" required>
+                <input id="clase" name="clase" type="text" autocomplete=off required>
             </label>
             <label for="rango">Rango: 
                 <input id="rango" name="rango" type="number" required>
@@ -19,7 +20,7 @@
                 <input id="manejo" name="manejo" type="number" required>
             </label>
             <label for="url">Url de imágen: 
-                <input id="url" name="url" type="text" required>
+                <input id="url" name="url" type="text" autocomplete=off required>
             </label>
             <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
         </form>

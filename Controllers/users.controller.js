@@ -2,12 +2,19 @@ const Usuario = require("../Model/usuario.model")
 const bcrypt = require("bcryptjs")
 
 exports.get_login = (request, response, next) => {
+    const past = request.flash("Past_login")[0]
     response.render("login", {username: request.session.username || "",
-    registro: false
+    registro: false,
+    past: past || {username: "", state: ""},
+    csrfToken: request.csrfToken()
 })
 }
 
 exports.post_login = (request, response, next) => {
+    request.flash("Past_login", {
+        username: request.body.pswrd,
+        state: "No concuerda"
+    })
     Usuario.fetch(request.body.Username).then(([rows, fieldData]) => {
         if (rows.length == 1){
             const usuario = rows[0]
@@ -37,7 +44,8 @@ exports.get_logout = (request, response, next) => {
 exports.get_signup = (request, response, next) => {
     response.render("login", {
         username: request.session.username || "",
-        registro: true
+        registro: true,
+        csrfToken: request.csrfToken()
     })
 }
 

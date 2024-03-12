@@ -10,6 +10,7 @@
 
     <div class="cell large-3 medium-6 small-6">
         <form action="/armas_lista/modificar" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <img class="thumbnail" src="<%=lista_armas[i].URL%>">
             <label for="nombre">Nombre: 
                 <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].Nombre%>" required>
