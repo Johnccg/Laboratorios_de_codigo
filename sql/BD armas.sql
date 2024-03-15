@@ -46,5 +46,58 @@ values("John Doe","JohnDDD","Hola1234");
 insert into Arma_Usuario(IDArma, Username)
 values(1,"JohnDDD");
 
+create table Rol(
+	IDRol int auto_increment,
+    Nombre varchar(40),
+    created_at timestamp not null default current_timestamp,
+    primary key (IDRol)
+);
+
+create table Privilegio(
+	IDPrivilegio int auto_increment,
+    Nombre varchar(40),
+    created_at timestamp not null default current_timestamp,
+    primary key (IDPrivilegio)
+);
+
+create table Usuario_Rol(
+	IDRol int,
+    Username varchar(100),
+    created_at timestamp not null default current_timestamp,
+    primary key (IDRol,Username),
+    foreign key (IDRol) references Rol(IDRol),
+    foreign key (Username) references Usuario(Username)
+);
+
+create table Rol_Privilegio(
+	IDRol int,
+    IDPrivilegio int,
+    created_at timestamp not null default current_timestamp,
+    primary key (IDRol,IDPrivilegio),
+    foreign key (IDRol) references Rol(IDRol),
+    foreign key (IDPrivilegio) references Privilegio(IDPrivilegio)
+);
+
+insert into Rol(Nombre)
+values
+("Editor"),#1
+("Lector");#2
+
+insert into Privilegio(Nombre)
+values
+("Editar Lista"),#1
+("Ver Sitio");#2
+
+insert into rol_privilegio(IDRol, IDPrivilegio)
+values
+(1,1),
+(1,2),
+(2,2);
+
+insert into usuario_rol(IDRol, Username)
+values
+(1,"Johnccg"),
+(2,"Unikv");
+
 select *
-from Usuario
+from usuario_rol
