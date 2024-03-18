@@ -100,4 +100,4 @@ values
 (2,"Unikv");
 
 select *
-from usuario_rol
+from usuario;

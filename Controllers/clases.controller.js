@@ -5,7 +5,8 @@ exports.get_validar = (request, response, next) => {
     response.render("validar", {
         username: request.session.username || "",
         past: past || {pswrd: "", pswrd_confirm: "", state: ""},
-        csrfToken: request.csrfToken()
+        csrfToken: request.csrfToken(),
+        permisos: request.session.permisos || []
     })
 }
 
@@ -27,9 +28,16 @@ exports.post_validar = (request, response, next) => {
 }
 
 exports.get_preguntas = (request, response, next) => {
-    response.render("preguntas", {username: request.session.username || ""})
+    response.render("preguntas", {
+        username: request.session.username || "",
+        permisos: request.session.permisos || []
+    })
 }
 
 exports.get_raiz = (request, response, next) => {
-    response.render("home", {username: request.session.username || ""})
+    console.log(request.session.permisos)
+    response.render("home", {
+        username: request.session.username || "",
+        permisos: request.session.permisos || []
+    })
 }

@@ -18,17 +18,44 @@
               <li><img id="logo" src="/video/splatoon-kirby.gif" alt="Imágen aquí"></li>
               <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/preguntas">Preguntas</a></li>
-                  <li><a href="/validar">Validador de contraseñas</a></li>
-                  <li class="has-submenu">
-                    <a href="#0">Armas</a>
-                    <ul class="submenu menu vertical" data-submenu>
-                      <li><a href="/armas_lista">Lista de armas</a></li>
-                      <li><a href="/armas_lista/crear">Crear arma</a></li>
-                      <li><a href="/armas_lista/modificar">Mdificar armas</a></li>
-                    </ul>
-                  </li>
+
+                  <% for(permiso of permisos) { %>
+                    <% if(permiso.Nombre == 'Ver Sitio') { %>
+                      <li><a href="/">Home</a></li>
+                      <% break %>
+                    <% } %>
+                  <% } %>
+
+                  <% for(permiso of permisos) { %>
+                    <% if(permiso.Nombre == 'Ver Sitio') { %>
+                      <li><a href="/preguntas">Preguntas</a></li>
+                      <% break %>
+                    <% } %>
+                  <% } %>
+              
+                  <% for(permiso of permisos) { %>
+                    <% if(permiso.Nombre == 'Ver Sitio') { %>
+                      <li><a href="/validar">Validador de contraseñas</a></li>
+                      <% break %>
+                    <% } %>
+                  <% } %>
+
+                  <% for(permiso of permisos) { %>
+                    <% if(permiso.Nombre == 'Ver Sitio') { %>
+                      <li><a href="/armas_lista">Armas</a></li>
+                      <% break %>
+                    <% } else if(permiso.Nombre == 'Editar Lista') { %>
+                      <li class="has-submenu">
+                        <a href="/armas_lista">Armas</a>
+                        <ul class="submenu menu vertical" data-submenu>
+                          <li><a href="/armas_lista">Lista de armas</a></li>
+                          <li><a href="/armas_lista/crear">Crear arma</a></li>
+                          <li><a href="/armas_lista/modificar">Mdificar armas</a></li>
+                        </ul>
+                      </li>
+                      <% break %>
+                    <% } %>
+                  <% } %>
                 </ul>
               </div>
               <div class="top-bar-right">

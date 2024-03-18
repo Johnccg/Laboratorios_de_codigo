@@ -3,7 +3,8 @@ const Arma = require("../Model/armas.model")
 exports.get_crear = (request, response, next) => {
     response.render("crear", {
         username: request.session.username || "",
-        csrfToken: request.csrfToken()
+        csrfToken: request.csrfToken(),
+        permisos: request.session.permisos || [],
     })
 }
 
@@ -28,6 +29,7 @@ exports.get_modificar = (request, response, next) => {
             lista_armas: rows,
             username: request.session.username || "",
             csrfToken: request.csrfToken(),
+            permisos: request.session.permisos || []
         })
     })
     
@@ -59,7 +61,8 @@ exports.get_raiz = (request,response,next) => {
     Arma.fetch(request.params.arma_id).then(([rows, filedData]) => {
         response.render("lista_armas",{
             lista_armas: rows,
-            username: request.session.username || ""
+            username: request.session.username || "",
+            permisos: request.session.permisos || []
         })
     })
     .catch((error) => {

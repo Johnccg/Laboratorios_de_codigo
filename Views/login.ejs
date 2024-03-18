@@ -1,4 +1,7 @@
-<%- include('includes/head.ejs'), {username: username} %>
+<%- include('includes/head.ejs'), {
+    username: username,
+    permisos: permisos
+} %>
     <div class="primary callout" id="login">
         <h1><% if (registro){ %>Registrate<% }else{ %>Bienvenido!<% } %></h1>
 
@@ -21,11 +24,11 @@
                 <label for="Contrasena">Contraseña: 
                     <input id="Contrasena" name="Contrasena" type="password" required>
                 </label>
-                <% if (past.state == "No concuerda"){ %>
-                    <div class="callout alert" id="no_concuerda">
-                        Usuario o contraseña incorrectos
-                    </div>
-                <% } %>
+            <% } %>
+            <% if (past.state != ""){ %>
+                <div class="callout alert" id="no_concuerda">
+                    <%=past.state%>
+                </div>
             <% } %>
             <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
         </form>

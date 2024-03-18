@@ -1,4 +1,7 @@
-<%- include('includes/head.ejs'), {username: username} %>
+<%- include('includes/head.ejs'), {
+    username: username,
+    permisos: permisos
+} %>
     <% let count = 0 %>
 
     <% for (let i in lista_armas){ %>
