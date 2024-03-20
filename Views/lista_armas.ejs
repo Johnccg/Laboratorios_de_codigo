@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs'), {username: username} %>
+    <% let count = 0 %>
+
+    <% for (let i in lista_armas){ %>
+
+        <% if(count == 0){ %>
+            <div class="grid-x grid-margin-x">
+        <% } %>
+        <% count ++ %>
+        
+        <div class="cell large-3 medium-6 small-6">
+            <img class="thumbnail" src="<%=lista_armas[i].URL%>">
+            <a href="/armas_lista/<%=lista_armas[i].IDArma%>"><h5><%=lista_armas[i].Nombre%></h5></a>
+            <p>Clase: <%=lista_armas[i].Clase%></p>
+            <p>Rango: <%=lista_armas[i].Rango%></p>
+            <p>Daño: <%=lista_armas[i].Daño%></p>
+            <p>Manejo: <%=lista_armas[i].Manejo%></p>
+        </div>
+
+        <% if(count == 4 || i == lista_armas.length){ %>
+            </div>
+            <% count = 0 %>
+        <% } %>
+    <% } %>
+<%- include('includes/footer.ejs') %>

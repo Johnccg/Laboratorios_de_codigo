@@ -12,6 +12,40 @@
     margin: 0 auto;
   }
 }
+
+img.home  {
+  background-color: aliceblue;
+}
+
+img:hover.home {
+  background-color: rgb(229, 236, 242);
+}
+
+#s_menu{
+  background-color: rgb(233, 233, 233);
+}
+
+#no_concuerda{
+  color: red; 
+}
+
+#logo{
+  width: 5rem;
+}
+
+#login{
+  max-width: 50%;
+  margin: auto;
+}
+
+.text_button{
+  margin: 0 1px 0 0;
+  padding: 0.85em 1em;
+  border: 1px;
+  line-height: 1;
+  font-family: inherit;
+}
+
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
@@ -79,14 +113,6 @@ sub {
 
 sup {
   top: -0.5em;
-}
-
-img {
-  background-color: aliceblue;
-}
-
-img:hover{
-  background-color: rgb(229, 236, 242);
 }
 
 button,

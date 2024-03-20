@@ -1,0 +1,44 @@
+<%- include('includes/head.ejs'), {username: username} %>
+    <div class="primary callout">
+        <h1>Valida tu contraseña</h1>
+
+        <p>
+            Tu contraseña debe tener el menos:
+            <ul>
+                <li>10 carascteres</li>
+                <li>Letras en mayúscula y minuscula</li>
+                <li>Números</li>
+                <li>caracteres especiales ($, @, %, &, etc.)</li>
+            </ul>
+        </p>
+
+        <div class = "grid-x grid-padding-x">
+            <div class="medium-4 large-4 small-4 cell">
+                Ingresa tu contraseña<br>
+                Vuelve a ingresar tu contraseña
+            </div>
+            <div class="medium-4 large-4 small-4 cell">
+                <form action="/validar" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <div class="input-group">
+                        <input class="input-group-field" id="pswrd" name="pswrd" type="text" value="<%=past.pswrd%>" autocomplete=off required>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group-field" id="pswrd_confirm" name="pswrd_confirm" type="password" value="<%=past.pswrd_confirm%>" required>
+                    </div>
+                    <% if (past.state == "No concuerda"){ %>
+                        <div class="callout alert" id="no_concuerda">
+                            La contraseña no concuerda
+                        </div>
+                    <% } %>
+                    <input id="hidden" name="hidden" type="hidden">
+                    <button type="submit" class="success button" id="submit" value="Contraseña">Confirmar</button>
+                </form>
+            </div>
+            <div class="medium-4 large-4 small-4 cell">
+                <span id="fortaleza"></span>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/Lab_6.js"></script>
+<%- include('includes/footer.ejs') %>

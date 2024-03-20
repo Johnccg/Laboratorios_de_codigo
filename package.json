@@ -1,0 +1,37 @@
+{
+  "name": "laboratorios_de_codigo",
+  "version": "1.0.0",
+  "description": "Paquete para los laboratorios de código",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johnccg/Laboratorios_de_codigo.git"
+  },
+  "keywords": [
+    "tc2005B"
+  ],
+  "author": "Juan Carlos Calderón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Johnccg/Laboratorios_de_codigo/issues"
+  },
+  "homepage": "https://github.com/Johnccg/Laboratorios_de_codigo#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "mysql2": "^3.9.2"
+  }
+}

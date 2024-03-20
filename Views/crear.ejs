@@ -1,0 +1,28 @@
+<%- include('includes/head.ejs'), {username: username} %>
+    <div class="primary callout">
+        <h1>Añade un arma</h1>
+
+        <form action="/armas_lista/crear" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <label for="nombre">Nombre: 
+                <input id="nombre" name="nombre" type="text" autocomplete=off required>
+            </label>
+            <label for="clase">Clase: 
+                <input id="clase" name="clase" type="text" autocomplete=off required>
+            </label>
+            <label for="rango">Rango: 
+                <input id="rango" name="rango" type="number" required>
+            </label>
+            <label for="dano">Daño: 
+                <input id="dano" name="dano" type="number" required>
+            </label>
+            <label for="manejo">Manejo: 
+                <input id="manejo" name="manejo" type="number" required>
+            </label>
+            <label for="url">Url de imágen: 
+                <input id="url" name="url" type="text" autocomplete=off required>
+            </label>
+            <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
+        </form>
+    </div>
+<%- include('includes/footer.ejs') %>

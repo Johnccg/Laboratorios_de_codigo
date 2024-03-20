@@ -1,0 +1,33 @@
+<%- include('includes/head.ejs'), {username: username} %>
+    <div class="primary callout" id="login">
+        <h1><% if (registro){ %>Registrate<% }else{ %>Bienvenido!<% } %></h1>
+
+        <form action="/users/<% if (registro){ %>signup<% }else{ %>login<% } %>" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <% if (registro){ %>
+                <label for="Nombre">Nombre Completo: 
+                    <input id="Nombre" name="Nombre" type="text" autocomplete=off required>
+                </label>
+                <label for="Username">Nombre de usuario: 
+                    <input id="Username" name="Username" type="text" autocomplete=off required>
+                </label>
+                <label for="Contrasena">Contraseña: 
+                    <input id="Contrasena" name="Contrasena" type="password" required>
+                </label>
+            <% }else{ %>
+                <label for="Username">Nombre de usuario: 
+                    <input id="Username" name="Username" type="text" value="<%past.username%>" autocomplete=off required>
+                </label>
+                <label for="Contrasena">Contraseña: 
+                    <input id="Contrasena" name="Contrasena" type="password" required>
+                </label>
+                <% if (past.state == "No concuerda"){ %>
+                    <div class="callout alert" id="no_concuerda">
+                        Usuario o contraseña incorrectos
+                    </div>
+                <% } %>
+            <% } %>
+            <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
+        </form>
+    </div>
+<%- include('includes/footer.ejs') %>

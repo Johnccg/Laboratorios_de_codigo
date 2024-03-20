@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class = "no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Laboratorios</title>
+        <link rel="stylesheet" href="/css/foundation.css" crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+                <button class="menu-icon" type="button" data-toggle></button>
+                <div class="title-bar-title">Menu</div>
+            </div>
+              
+            <div class="top-bar" id="responsive-menu">
+              <li><img id="logo" src="/video/splatoon-kirby.gif" alt="Imágen aquí"></li>
+              <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/preguntas">Preguntas</a></li>
+                  <li><a href="/validar">Validador de contraseñas</a></li>
+                  <li class="has-submenu">
+                    <a href="#0">Armas</a>
+                    <ul class="submenu menu vertical" data-submenu>
+                      <li><a href="/armas_lista">Lista de armas</a></li>
+                      <li><a href="/armas_lista/crear">Crear arma</a></li>
+                      <li><a href="/armas_lista/modificar">Mdificar armas</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="top-bar-right">
+                <div class="button-group">
+                  <% if (username == "") {%>
+                    <a href="/users/login" class="button">Login</a>
+                    <a href="/users/signup" class="button">Sign up</a>
+                  <% }else {%>
+                    <p class="text_button">Hola <%= username%></p>
+                    <a href="/users/logout" class="button" style="vertical-align: middle;">Logout</a>
+                  <% }%>
+                </div>
+              </div>
+            </div>
+            <p id = "intro">Juan Carlos calderón García | A01625696 | a01625696@tec.mx</p>
+        </header>
+        <main class="grid-container">
