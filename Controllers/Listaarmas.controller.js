@@ -9,6 +9,8 @@ exports.get_crear = (request, response, next) => {
 }
 
 exports.post_crear = (request,response,next)=>{
+    console.log(request.file)
+    
     const mi_arma = new Arma(
         request.body.nombre,
         request.body.clase,
