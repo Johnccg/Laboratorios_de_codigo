@@ -111,10 +111,14 @@ HAVING avg(cantidad) > (
 
 # RFC, razón social de los proveedores que participaron en el proyecto 'Infonavit Durango' y cuyas cantidades totales entregadas en el 2000 fueron mayores a las cantidades totales entregadas en el 2001. 
 
-SELECT PR.rfc, razonsocial
+SELECT DISTINCT PR.rfc, razonsocial
 FROM proveedores AS PR
 JOIN entregan AS E ON PR.rfc = E.rfc
 JOIN proyectos AS PRO ON E.numero = PRO.numero
-WHERE denominacion = 'Infonavit Durango' AND (
-											SELECT sum(cantidad)
-                                            FROM ) > ();
+WHERE denominacion = 'Infonavit Durango' AND (SELECT sum(cantidad)
+												FROM entregan as EC1
+												WHERE fecha between '2000-01-01' AND '2000-12-31' AND EC1.rfc = PR.rfc
+												GROUP BY rfc) > (SELECT sum(cantidad)
+																FROM entregan AS ec2
+																WHERE fecha between '2001-01-01' AND '2001-12-31'  AND EC2.rfc = PR.rfc
+																GROUP BY rfc);
