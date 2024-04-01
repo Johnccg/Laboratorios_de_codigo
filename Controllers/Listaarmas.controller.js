@@ -15,7 +15,7 @@ exports.post_crear = (request,response,next)=>{
         request.body.rango,
         request.body.dano,
         request.body.manejo,
-        request.body.url)
+        request.file.filename)
         mi_arma.save().then(() => {
             response.setHeader('Set-Cookie', 'A_nombre=' + mi_arma.nombre + "; HttpOnly");
             response.redirect("/armas_lista")
@@ -46,7 +46,7 @@ exports.post_modificar = (request,response,next)=>{
         request.body.rango,
         request.body.dano,
         request.body.manejo,
-        request.body.url).then(([rows, fieldData]) => {
+        request.file.filename).then(([rows, fieldData]) => {
             console.log(rows)
             response.redirect("/armas_lista")
         })

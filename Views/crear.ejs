@@ -5,7 +5,7 @@
     <div class="primary callout">
         <h1>Añade un arma</h1>
 
-        <form action="/armas_lista/crear" method="POST">
+        <form action="/armas_lista/crear" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <label for="nombre">Nombre: 
                 <input id="nombre" name="nombre" type="text" autocomplete=off required>
@@ -22,8 +22,8 @@
             <label for="manejo">Manejo: 
                 <input id="manejo" name="manejo" type="number" required>
             </label>
-            <label for="url">Url de imágen: 
-                <input id="url" name="url" type="text" autocomplete=off required>
+            <label for="imagen">Imágen: 
+                <input id="imagen" name="imagen" type="file" autocomplete=off required>
             </label>
             <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
         </form>
