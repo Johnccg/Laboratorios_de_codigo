@@ -1,3 +1,4 @@
+const { response } = require("express")
 const Arma = require("../Model/armas.model")
 
 exports.get_crear = (request, response, next) => {
@@ -66,6 +67,15 @@ exports.get_raiz = (request,response,next) => {
             username: request.session.username || "",
             permisos: request.session.permisos || []
         })
+    })
+    .catch((error) => {
+        console.log(error)
+    }) 
+}
+
+exports.get_buscar = (request, response, next) =>{
+    Arma.search(request.params.busqueda || '').then(([armas, filedData]) => {
+        return response.status(200).json({lista_armas: armas})
     })
     .catch((error) => {
         console.log(error)

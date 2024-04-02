@@ -87,4 +87,7 @@ module.exports = class Arma {
         return db.execute(`CALL eliminarArma(?)`, [index])
     }
 
+    static search(busqueda){
+        return db.execute("SELECT * FROM Arma WHERE Nombre LIKE ? OR Clase LIKE ? OR Rango = ? OR Daño = ? OR Manejo = ?",['%' + busqueda + '%','%' + busqueda + '%', busqueda, busqueda, busqueda])
+    }
 }
