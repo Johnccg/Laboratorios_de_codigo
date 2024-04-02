@@ -45,7 +45,6 @@ const db = require("../Util/database");
 
 module.exports = class Arma {
 
-    //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
     constructor(mi_nombre, mi_clase, mi_rango, mi_dano, mi_manejo, mi_url) {
         this.nombre = mi_nombre
         this.clase = mi_clase
@@ -55,16 +54,13 @@ module.exports = class Arma {
         this.url = mi_url
     }
 
-    //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
         return db.execute(
-            `INSERT INTO Arma(Nombre,Clase,Rango,Daño,Manejo,URL)
-            VALUES(?, ?, ?, ?, ?, ?)`,
+            `CALL registrarArma(?, ?, ?, ?, ?, ?)`,
             [this.nombre, this.clase, this.rango, this.dano, this.manejo, this.url]
         )
     }
 
-    //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
         return db.execute("Select * from Arma")
     }
@@ -81,14 +77,14 @@ module.exports = class Arma {
         return db.execute("SELECT * FROM Arma WHERE IDArma=?",[id])
     }
     
-    static assign(index,mi_nombre, mi_clase, mi_rango, mi_dano, mi_manejo, mi_url){
-        return db.execute(`UPDATE Arma
-        SET Nombre = ?,
-        Clase = ?,
-        Rango = ?,
-        Daño = ?,
-        Manejo = ?,
-        URL = ?
-        WHERE IDArma = ?`,[mi_nombre, mi_clase, mi_rango, mi_dano, mi_manejo, mi_url, index])
+    static assign(index, mi_nombre, mi_clase, mi_rango, mi_dano, mi_manejo, mi_url){
+        return db.execute(`
+        CALL modificarArma(?, ?, ?, ?, ?, ?, ?)`,
+        [index, mi_nombre, mi_clase, mi_rango, mi_dano, mi_manejo, mi_url])
     }
+
+    static delete(index){
+        return db.execute(`CALL eliminarArma(?)`, [index])
+    }
+
 }
