@@ -100,4 +100,29 @@ values
 (2,"Unikv");
 
 select *
-from usuario;
+from arma;
+
+
+create procedure registrarArma(uNombre varchar(50), uClase varchar(30), uRango int, uDaño int, uManejo int, uURL varchar(255))
+insert into arma(Nombre, Clase, Rango, Daño, Manejo, URL) values (uNombre, uClase, uRango, uDaño, uManejo, uURL);
+
+create procedure eliminarArma(uID int)
+delete from arma where IDArma = uID;
+
+create procedure modificarArma(uID int, uNombre varchar(50), uClase varchar(30), uRango int, uDaño int, uManejo int, uURL varchar(255))
+UPDATE Arma
+SET Nombre = uNombre,
+Clase = uClase,
+Rango = uRango,
+Daño = uDaño,
+Manejo = uManejo,
+URL = uURL
+WHERE IDArma = uID;
+
+DROP procedure eliminarArma;
+
+call registrarArma('Splatana Wiper', 'wiper', 58, 29, 75, 'https://cdn.wikimg.net/en/splatoonwiki/images/thumb/e/e5/S3_Weapon_Main_Splatana_Wiper.png/384px-S3_Weapon_Main_Splatana_Wiper.png');
+
+call modificarArma(8, 'Joe', 'Mama', 0, 0, 0, 'https://cdn.wikimg.net/en/splatoonwiki/images/thumb/e/e5/S3_Weapon_Main_Splatana_Wiper.png/384px-S3_Weapon_Main_Splatana_Wiper.png');
+
+call eliminarArma(9);
