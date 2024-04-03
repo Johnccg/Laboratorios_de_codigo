@@ -10,7 +10,8 @@ exports.get_crear = (request, response, next) => {
 }
 
 exports.post_crear = (request,response,next)=>{
-    console.log(request.file)
+    //console.log(request.body)
+    //console.log(request.file)
     
     const mi_arma = new Arma(
         request.body.nombre,
@@ -50,7 +51,7 @@ exports.post_modificar = (request,response,next)=>{
         request.body.dano,
         request.body.manejo,
         request.file.filename).then(([rows, fieldData]) => {
-            console.log(rows)
+            //console.log(rows)
             response.redirect("/armas_lista")
         })
         .catch((error) => {

@@ -23,7 +23,7 @@ exports.post_login = (request, response, next) => {
             bcrypt.compare(request.body.Contrasena,usuario.Contraseña).then((doMatch) => {
                 if (doMatch){
                     Usuario.getPermisos(usuario.Username).then(([permisos, fieldData]) => {
-                        console.log(permisos);
+                        //console.log(permisos);
                         
                         request.session.permisos = permisos;
                         request.session.username = usuario.Nombre

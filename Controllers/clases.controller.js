@@ -35,7 +35,6 @@ exports.get_preguntas = (request, response, next) => {
 }
 
 exports.get_raiz = (request, response, next) => {
-    console.log(request.session.permisos)
     response.render("home", {
         username: request.session.username || "",
         permisos: request.session.permisos || []
