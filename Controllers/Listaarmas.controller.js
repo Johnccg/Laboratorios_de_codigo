@@ -43,20 +43,39 @@ exports.get_modificar = (request, response, next) => {
 }
 
 exports.post_modificar = (request,response,next)=>{
-    Arma.assign(
-        request.body.ID,
-        request.body.nombre,
-        request.body.clase,
-        request.body.rango,
-        request.body.dano,
-        request.body.manejo,
-        request.file.filename).then(([rows, fieldData]) => {
-            //console.log(rows)
-            response.redirect("/armas_lista")
-        })
-        .catch((error) => {
-            console.log(error)
-        }) 
+    //console.log(request.body)
+    console.log(request.file)
+    
+    if(request.file){
+        Arma.assign(
+            request.body.ID,
+            request.body.nombre,
+            request.body.clase,
+            request.body.rango,
+            request.body.dano,
+            request.body.manejo,
+            request.file.filename).then(([rows, fieldData]) => {
+                console.log(rows)
+                response.redirect("/armas_lista")
+            })
+            .catch((error) => {
+                console.log(error)
+            }) 
+    }else{
+        Arma.assignSin(
+            request.body.ID,
+            request.body.nombre,
+            request.body.clase,
+            request.body.rango,
+            request.body.dano,
+            request.body.manejo).then(([rows, fieldData]) => {
+                console.log(rows)
+                response.redirect("/armas_lista")
+            })
+            .catch((error) => {
+                console.log(error)
+            }) 
+    }
 }
 
 exports.get_raiz = (request,response,next) => {

@@ -12,9 +12,9 @@
     <% count ++ %>
 
     <div class="cell large-3 medium-6 small-6">
-        <form action="/armas_lista/modificar" method="POST">
+        <form action="/armas_lista/modificar" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <img class="thumbnail" src="<%=lista_armas[i].URL%>">
+            <img class="thumbnail" src="/uploads/<%=lista_armas[i].URL%>">
             <label for="nombre">Nombre: 
                 <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].Nombre%>" required>
             </label>
@@ -30,10 +30,10 @@
             <label for="manejo">Manejo: 
                 <input id="manejo" name="manejo" type="number" value="<%=lista_armas[i].Manejo%>" required>
             </label>
-            <label for="url">Url de imágen: 
-                <input id="url" name="url" type="text" value="<%=lista_armas[i].URL%>" required>
-            </label>
             <input id="ID" name="ID" type="hidden" value="<%=lista_armas[i].IDArma%>">
+            <label for="imagen">Imágen: 
+                <input id="imagen" name="imagen" type="file">
+            </label>
             <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
         </form>
     </div>

@@ -119,10 +119,19 @@ Manejo = uManejo,
 URL = uURL
 WHERE IDArma = uID;
 
-DROP procedure eliminarArma;
+create procedure modificarArmaSinImg(uID int, uNombre varchar(50), uClase varchar(30), uRango int, uDaño int, uManejo int)
+UPDATE Arma
+SET Nombre = uNombre,
+Clase = uClase,
+Rango = uRango,
+Daño = uDaño,
+Manejo = uManejo
+WHERE IDArma = uID;
 
 call registrarArma('Splatana Wiper', 'wiper', 58, 29, 75, 'https://cdn.wikimg.net/en/splatoonwiki/images/thumb/e/e5/S3_Weapon_Main_Splatana_Wiper.png/384px-S3_Weapon_Main_Splatana_Wiper.png');
 
 call modificarArma(8, 'Joe', 'Mama', 0, 0, 0, 'https://cdn.wikimg.net/en/splatoonwiki/images/thumb/e/e5/S3_Weapon_Main_Splatana_Wiper.png/384px-S3_Weapon_Main_Splatana_Wiper.png');
+
+call modificarArmaSinImg(1, 'Joe', 'Mama', 0, 0, 0);
 
 call eliminarArma(9);
