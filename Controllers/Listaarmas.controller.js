@@ -28,15 +28,22 @@ exports.post_crear = (request,response,next)=>{
 }
 
 exports.get_modificar = (request, response, next) => {
-    Arma.fetchAll().then(([rows, fieldData]) => {
+    //console.log(request.params.arma_id)
+    if(request.params.arma_id){
+        select = true
+    }else{
+        select = false
+    }
+
+    Arma.fetch(request.params.arma_id).then(([rows, fieldData]) => {
         response.render("modificar",{
             lista_armas: rows,
             username: request.session.username || "",
             csrfToken: request.csrfToken(),
-            permisos: request.session.permisos || []
+            permisos: request.session.permisos || [],
+            select: select
         })
     })
-    
     .catch((error) => {
         console.log(error)
     }) 
@@ -81,11 +88,18 @@ exports.post_modificar = (request,response,next)=>{
 exports.get_raiz = (request,response,next) => {
     //console.log(request.cookies)
     //console.log(request.params.arma_id)
+    if(request.params.arma_id){
+        select = true
+    }else{
+        select = false
+    }
+
     Arma.fetch(request.params.arma_id).then(([rows, filedData]) => {
         response.render("lista_armas",{
             lista_armas: rows,
             username: request.session.username || "",
-            permisos: request.session.permisos || []
+            permisos: request.session.permisos || [],
+            select: select
         })
     })
     .catch((error) => {

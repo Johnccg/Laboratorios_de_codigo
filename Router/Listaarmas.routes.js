@@ -9,6 +9,7 @@ const controller_A = require("../Controllers/Listaarmas.controller")
 
 router.get("/crear", Autenticado, canEdit, controller_A.get_crear)
 router.post("/crear", Autenticado, canEdit, controller_A.post_crear)
+router.get("/modificar/:arma_id", Autenticado, canEdit, controller_A.get_modificar)
 router.get("/modificar", Autenticado, canEdit, controller_A.get_modificar)
 router.post("/modificar", Autenticado, canEdit, controller_A.post_modificar)
 router.get("/buscar/:busqueda", Autenticado, canView, controller_A.get_buscar)

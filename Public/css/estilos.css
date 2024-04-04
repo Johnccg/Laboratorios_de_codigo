@@ -103,11 +103,11 @@ td{
     color: #0a0a0a;
 }
 
-#fortaleza{
-    /* visibility: hidden; */
-}
-
 #similitud{
     visibility: hidden;
     color: red;
+}
+
+#edit{
+    margin-top: 10rem !important;
 }

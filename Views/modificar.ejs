@@ -2,45 +2,132 @@
     username: username,
     permisos: permisos
 } %>
-<% let count = 0 %>
 
-<% for (let i in lista_armas){ %>
-
-    <% if(count == 0){ %>
-        <div class="grid-x grid-padding-x">
+    <% if(!select){ %>
+        <div class="input-group">
+            <span class="input-group-label"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input class="input-group-field" id="busqueda" type="text" placeholder="Buscar">
+            <div class="input-group-button">
+                <input type="submit" class="clear button" onclick="location.href='/armas_lista/';" value="< Regresar">
+            </div>
+        </div>
+    <% }else {%>
+        <a href="/armas_lista" class="clear button">&lt Regresar</a>
     <% } %>
-    <% count ++ %>
+    
+    <% let count = 0 %>
 
-    <div class="cell large-3 medium-6 small-6">
-        <form action="/armas_lista/modificar" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <img class="thumbnail" src="/uploads/<%=lista_armas[i].URL%>">
-            <label for="nombre">Nombre: 
-                <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].Nombre%>" required>
-            </label>
-            <label for="clase">Clase: 
-                <input id="clase" name="clase" type="text" value="<%=lista_armas[i].Clase%>" required>
-            </label>
-            <label for="rango">Rango: 
-                <input id="rango" name="rango" type="number" value="<%=lista_armas[i].Rango%>" required>
-            </label>
-            <label for="dano">Daño: 
-                <input id="dano" name="dano" type="number" value="<%=lista_armas[i].Daño%>" required>
-            </label>
-            <label for="manejo">Manejo: 
-                <input id="manejo" name="manejo" type="number" value="<%=lista_armas[i].Manejo%>" required>
-            </label>
-            <input id="ID" name="ID" type="hidden" value="<%=lista_armas[i].IDArma%>">
-            <label for="imagen">Imágen: 
-                <input id="imagen" name="imagen" type="file">
-            </label>
-            <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
-        </form>
+    <div id="busqueda_Ajax">
+        <% for (let i in lista_armas){ %>
+        
+            <% if(count == 0){ %>
+                <div class="grid-x grid-padding-x">
+            <% } %>
+            <% count ++ %>
+        
+            <div class="cell large-3 medium-6 small-6">
+                <form action="/armas_lista/modificar" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <img class="thumbnail" src="/uploads/<%=lista_armas[i].URL%>">
+                    <label for="nombre">Nombre: 
+                        <input id="nombre" name="nombre" type="text" value="<%=lista_armas[i].Nombre%>" required>
+                    </label>
+                    <label for="clase">Clase: 
+                        <input id="clase" name="clase" type="text" value="<%=lista_armas[i].Clase%>" required>
+                    </label>
+                    <label for="rango">Rango: 
+                        <input id="rango" name="rango" type="number" value="<%=lista_armas[i].Rango%>" required>
+                    </label>
+                    <label for="dano">Daño: 
+                        <input id="dano" name="dano" type="number" value="<%=lista_armas[i].Daño%>" required>
+                    </label>
+                    <label for="manejo">Manejo: 
+                        <input id="manejo" name="manejo" type="number" value="<%=lista_armas[i].Manejo%>" required>
+                    </label>
+                    <input id="ID" name="ID" type="hidden" value="<%=lista_armas[i].IDArma%>">
+                    <label for="imagen">Imágen: 
+                        <input id="imagen" name="imagen" type="file">
+                    </label>
+                    <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
+                </form>
+            </div>
+        
+            <% if(count == 4 || i == lista_armas.length){ %>
+                </div>
+                <% count = 0 %>
+            <% } %>
+        <% } %>
     </div>
 
-    <% if(count == 4 || i == lista_armas.length){ %>
-        </div>
-        <% count = 0 %>
-    <% } %>
-<% } %>
+    <% if(!select){ %>
+        <script>
+            const accion_asincrona = () => {
+                const valor_de_busqueda = document.getElementById('busqueda').value;
+
+                console.log("buscando")
+                //función que manda la petición asíncrona
+                fetch('/armas_lista/buscar/' + valor_de_busqueda, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                }).then(result => {
+                    console.log(result)
+                    return result.json(); //Regresa otra promesa
+                }).then(data => {
+                    console.log(data)
+                    //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+                    let html =``
+                    let count = 0
+
+                    for (let i in data.lista_armas){
+                    
+                        if(count == 0){
+                            html += `<div class="grid-x grid-padding-x">`
+                        }
+                        count ++
+
+                        html +=`
+                        <div class="cell large-3 medium-6 small-6">
+                            <form action="/armas_lista/modificar" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <img class="thumbnail" src="/uploads/${data.lista_armas[i].URL}">
+                                <label for="nombre">Nombre: 
+                                    <input id="nombre" name="nombre" type="text" value="${data.lista_armas[i].Nombre}" required>
+                                </label>
+                                <label for="clase">Clase: 
+                                    <input id="clase" name="clase" type="text" value="${data.lista_armas[i].Clase}" required>
+                                </label>
+                                <label for="rango">Rango: 
+                                    <input id="rango" name="rango" type="number" value="${data.lista_armas[i].Rango}" required>
+                                </label>
+                                <label for="dano">Daño: 
+                                    <input id="dano" name="dano" type="number" value="${data.lista_armas[i].Daño}" required>
+                                </label>
+                                <label for="manejo">Manejo: 
+                                    <input id="manejo" name="manejo" type="number" value="${data.lista_armas[i].Manejo}" required>
+                                </label>
+                                <input id="ID" name="ID" type="hidden" value="${data.lista_armas[i].IDArma}">
+                                <label for="imagen">Imágen: 
+                                    <input id="imagen" name="imagen" type="file">
+                                </label>
+                                <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
+                            </form>
+                        </div>`
+
+                        if(count == 4 || i == data.lista_armas.length){
+                            html += `</div>`
+                            count = 0
+                        }
+                    }
+
+                    document.getElementById('busqueda_Ajax').innerHTML = html
+                }).catch(error => {
+                    console.log(error);
+                })
+            }
+
+            document.getElementById("busqueda").onkeyup = accion_asincrona
+        </script>
+    <% }%>
 <%- include('includes/footer.ejs')%>
