@@ -14,6 +14,7 @@ router.get("/modificar", Autenticado, canEdit, controller_A.get_modificar)
 router.post("/modificar", Autenticado, canEdit, controller_A.post_modificar)
 router.get("/buscar/:busqueda", Autenticado, canView, controller_A.get_buscar)
 router.get("/buscar/", Autenticado, canView, controller_A.get_buscar)
+router.post("/eliminar", Autenticado, canEdit, controller_A.post_eliminar)
 router.get("/:arma_id", Autenticado, canView, controller_A.get_raiz)
 router.get("/", Autenticado, canView, controller_A.get_raiz)
 

@@ -99,7 +99,8 @@ exports.get_raiz = (request,response,next) => {
             lista_armas: rows,
             username: request.session.username || "",
             permisos: request.session.permisos || [],
-            select: select
+            select: select,
+            csrfToken: request.csrfToken()
         })
     })
     .catch((error) => {
@@ -114,4 +115,15 @@ exports.get_buscar = (request, response, next) =>{
     .catch((error) => {
         console.log(error)
     }) 
+}
+
+exports.post_eliminar = (request, response, next) =>{
+    Arma.delete(request.body.ID)
+        .then(() => {
+            return Arma.fetchAll()
+        }).then(([armas, fieldData]) => {
+            return response.status(200).json({lista_armas: armas})
+        }).catch((error) => {
+            console.log(error)
+        })
 }

@@ -2,6 +2,10 @@
     username: username,
     permisos: permisos
 } %>
+    <input type="hidden" id="csrf" name="_csrf" value="<%= csrfToken %>">
+
+    <div id="Notif"></div>
+
     <% if(!select){ %>
         <div class="input-group">
             <span class="input-group-label"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -33,7 +37,7 @@
                 <p>Manejo: <%=lista_armas[i].Manejo%></p>
                 <p>
                     <a href="/armas_lista/modificar/<%=lista_armas[i].IDArma%>" class="button">Editar</a>
-                    <button class="button">Eliminar</button>
+                    <button onclick="eliminar(<%=lista_armas[i].IDArma%>)" class="button">Eliminar</button>
                 </p>
             </div>
     
@@ -45,7 +49,7 @@
     </div>
 
     <% if(!select){ %>
-        <script>
+    <script>
             const accion_asincrona = () => {
                 const valor_de_busqueda = document.getElementById('busqueda').value;
 
@@ -82,7 +86,7 @@
                             <p>Manejo: ${data.lista_armas[i].Manejo}</p>
                             <p>
                                 <a href="/armas_lista/modificar/${data.lista_armas[i].IDArma}" class="button">Editar</a>
-                                <button class="button">Eliminar</button>
+                                <button onclick="eliminar(${data.lista_armas[i].IDArma})" class="button">Eliminar</button>
                             </p>
                         </div>`
 
@@ -101,4 +105,71 @@
             document.getElementById("busqueda").onkeyup = accion_asincrona
         </script>
     <% } %>
+
+    <script>
+        const eliminar = (id) => {
+            const csrf = document.getElementById("csrf").value
+
+            const respuesta = confirm("Deseas elimiar?")
+
+            if (respuesta){
+                fetch("/armas_lista/eliminar/",
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            "csrf-token": csrf
+                        },
+                        body: JSON.stringify({ID: id})
+                    }).then(result => {
+                        console.log(result)
+                        return result.json()
+                    }).then(data => {
+                        console.log(data)
+    
+                        let html =``
+                        let count = 0
+    
+                        for (let i in data.lista_armas){
+                
+                            if(count == 0){
+                                html += `<div class="grid-x grid-margin-x">`
+                            }
+                            count ++
+                            
+                            html += `
+                            <div class="cell large-3 medium-6 small-6">
+                                <img class="thumbnail" src="/uploads/${data.lista_armas[i].URL}">
+                                <a href="/armas_lista/${data.lista_armas[i].IDArma}"><h5>${data.lista_armas[i].Nombre}</h5></a>
+                                <p>Clase: ${data.lista_armas[i].Clase}</p>
+                                <p>Rango: ${data.lista_armas[i].Rango}</p>
+                                <p>Daño: ${data.lista_armas[i].Daño}</p>
+                                <p>Manejo: ${data.lista_armas[i].Manejo}</p>
+                                <p>
+                                    <a href="/armas_lista/modificar/${data.lista_armas[i].IDArma}" class="button">Editar</a>
+                                    <button onclick="eliminar(${data.lista_armas[i].IDArma})" class="button">Eliminar</button>
+                                </p>
+                            </div>`
+    
+                            if(count == 4 || i == data.lista_armas.length){
+                                html += `</div>`
+                                count = 0
+                            }
+                        }
+                        document.getElementById('busqueda_Ajax').innerHTML = html
+                        
+                        document.getElementById("Notif").innerHTML = `
+                        <div class="callout alert" data-closable>
+                            <button class="close-button" aria-label="Close alert" type="button" data-close>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <p>Se ha eliminado con éxito</p>
+                        </div>`
+                    }).catch(error => {
+                        console.log(error);
+                    })
+            }
+
+        }
+    </script>
 <%- include('includes/footer.ejs') %>

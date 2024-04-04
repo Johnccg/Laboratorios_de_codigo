@@ -21,15 +21,6 @@ create table Usuario(
     primary key (Username)
 );
 
-create table Arma_Usuario(
-	IDArma int,
-    Username varchar(100),
-    created_at timestamp not null default current_timestamp,
-    primary key (IDArma,Username),
-    foreign key (IDArma) references Arma(IDArma),
-    foreign key (Username) references Usuario(Username)
-);
-
 insert into Arma(Nombre,Clase,Rango,Daño,Manejo,URL)
 values("Splattershot", "Shooter", 50, 47, 60, "https://cdn.wikimg.net/en/splatoonwiki/images/thumb/b/bf/S3_Weapon_Main_Splattershot.png/384px-S3_Weapon_Main_Splattershot.png");
 
