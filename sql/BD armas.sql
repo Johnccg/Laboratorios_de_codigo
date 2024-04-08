@@ -1,6 +1,9 @@
 create database armas;
 use armas;
 
+select *
+from usuario;
+
 create table Arma(
 	IDArma int not null auto_increment,
     Nombre varchar(50),
@@ -33,9 +36,6 @@ values
 
 insert into Usuario(Nombre, Username, Contraseña)
 values("John Doe","JohnDDD","Hola1234");
-
-insert into Arma_Usuario(IDArma, Username)
-values(1,"JohnDDD");
 
 create table Rol(
 	IDRol int auto_increment,
@@ -90,10 +90,6 @@ values
 (1,"Johnccg"),
 (2,"Unikv");
 
-select *
-from arma;
-
-
 create procedure registrarArma(uNombre varchar(50), uClase varchar(30), uRango int, uDaño int, uManejo int, uURL varchar(255))
 insert into arma(Nombre, Clase, Rango, Daño, Manejo, URL) values (uNombre, uClase, uRango, uDaño, uManejo, uURL);
 
@@ -119,6 +115,7 @@ Daño = uDaño,
 Manejo = uManejo
 WHERE IDArma = uID;
 
+/*
 call registrarArma('Splatana Wiper', 'wiper', 58, 29, 75, 'https://cdn.wikimg.net/en/splatoonwiki/images/thumb/e/e5/S3_Weapon_Main_Splatana_Wiper.png/384px-S3_Weapon_Main_Splatana_Wiper.png');
 
 call modificarArma(8, 'Joe', 'Mama', 0, 0, 0, 'https://cdn.wikimg.net/en/splatoonwiki/images/thumb/e/e5/S3_Weapon_Main_Splatana_Wiper.png/384px-S3_Weapon_Main_Splatana_Wiper.png');
@@ -126,3 +123,16 @@ call modificarArma(8, 'Joe', 'Mama', 0, 0, 0, 'https://cdn.wikimg.net/en/splatoo
 call modificarArmaSinImg(1, 'Joe', 'Mama', 0, 0, 0);
 
 call eliminarArma(9);
+
+call registrarUsuario('Pepe','Pecas','1234')
+*/
+
+DELIMITER $$
+create procedure registrarUsuario(uNombre varchar(50), uUsername varchar(150), uPassword varchar(400))
+begin
+	insert into Usuario(Nombre, Username, Contraseña) VALUES (uNombre, uUsername, uPassword);
+    
+    insert into usuario_rol(IDRol, Username) VALUES (2, uUsername);
+end$$
+
+DELIMITER ;

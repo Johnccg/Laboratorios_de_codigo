@@ -11,23 +11,10 @@ module.exports = class Usuario{
     save(){
         return bcrypt.hash(this.password,12)
         .then(async (password_cifrado) => {
-            try{
-                await db.execute(
-                    `INSERT INTO Usuario(Nombre, Username, Contraseña)
-                    VALUES (?, ?, ?)`, 
-                    [this.nombre, this.username, password_cifrado]
-                )
-
-
-                return db.execute(
-                    `INSERT INTO usuario_rol(IDRol, Username)
-                    VALUES (2, ?)`,
-                    [this.username]
-                )
-            }catch{
-                console.log(error)
-                throw Error('Usuario duplicado')
-            }
+            return db.execute(`CALL registrarUsuario(?, ?, ?)`,
+            [this.nombre, this.username, password_cifrado])
+        }).catch((error) => {
+            console.log(error)
         })
     }
 
