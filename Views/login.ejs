@@ -25,6 +25,8 @@
                     <input id="Contrasena" name="Contrasena" type="password" required>
                 </label>
             <% } %>
+            <div class="g-recaptcha" data-sitekey="6Lf1HbYpAAAAAGKcnpi6YbkF0A9o3bQiVtiWXMHm"></div>
+            <br>
             <% if (past.state != ""){ %>
                 <div class="callout alert" id="no_concuerda">
                     <%=past.state%>
@@ -33,4 +35,8 @@
             <button type="submit" class="success button" id="submit" value="Arma">Confirmar</button>
         </form>
     </div>
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+
 <%- include('includes/footer.ejs') %>

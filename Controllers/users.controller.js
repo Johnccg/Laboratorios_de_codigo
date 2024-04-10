@@ -14,33 +14,52 @@ exports.get_login = (request, response, next) => {
 
 exports.post_login = (request, response, next) => {
     Usuario.fetch(request.body.Username).then(([usuarios, fieldData]) => {
-        request.flash("Past_login", {
-            state: "Usuario o contraseña incorrectos"
-        })
-
-        if (usuarios.length == 1){
-            const usuario = usuarios[0]
-            bcrypt.compare(request.body.Contrasena,usuario.Contraseña).then((doMatch) => {
-                if (doMatch){
-                    Usuario.getPermisos(usuario.Username).then(([permisos, fieldData]) => {
-                        //console.log(permisos);
-                        
-                        request.session.permisos = permisos;
-                        request.session.username = usuario.Nombre
-                        request.session.isLoggedIn = true
-                        response.redirect("/")
+        
+        const token = request.body['g-recaptcha-response']
+        const secret = "6Lf1HbYpAAAAAIArFrAcEpAplZvJychrx6QCvBRW"
+        let success
+        
+        fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
+            {
+                method: "POST"
+            }).then(result => {
+                //console.log(result)
+                return result.json()
+            }).then(data => {
+                //console.log(data)
+                success = data.success
+                
+                if (usuarios.length != 1 ){
+                    request.flash("Past_login", {
+                        state: "Usuario o contraseña incorrectos"
+                    })
+                    response.redirect("/users/login")
+                }else if (!success){
+                    request.flash("Past_login", {
+                        state: "Responde el Captcha"
+                    })
+                    response.redirect("/users/login")
+                }else{
+                    const usuario = usuarios[0]
+                    bcrypt.compare(request.body.Contrasena,usuario.Contraseña).then((doMatch) => {
+                        if (doMatch){
+                            Usuario.getPermisos(usuario.Username).then(([permisos, fieldData]) => {
+                                //console.log(permisos);
+                                
+                                request.session.permisos = permisos;
+                                request.session.username = usuario.Nombre
+                                request.session.isLoggedIn = true
+                                response.redirect("/")
+                            })
+                            .catch((error) => {console.log(error)})
+                        }else{
+                            response.redirect("/users/login")
+                        }
                     })
                     .catch((error) => {console.log(error)})
-                }else{
-                    response.redirect("/users/login")
                 }
-            })
-            .catch((error) => {console.log(error)})
-        }else{
-            response.redirect("/users/login")
-        }
-    })
-    .catch((error) => {console.log(error)})
+            }).catch((error) => {console.log(error)})
+    }).catch((error) => {console.log(error)})
 }
 
 exports.get_logout = (request, response, next) => {
